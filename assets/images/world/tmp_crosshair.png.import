@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tmp_dog_track.png-f92f58b8d0f883f60a1fd5a0a7bbd4df.stex"
+path="res://.import/tmp_crosshair.png-d404da36cf1b74a2ea1a9059f85a2c61.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/world/tmp_dog_track.png"
-dest_files=[ "res://.import/tmp_dog_track.png-f92f58b8d0f883f60a1fd5a0a7bbd4df.stex" ]
+source_file="res://assets/images/world/tmp_crosshair.png"
+dest_files=[ "res://.import/tmp_crosshair.png-d404da36cf1b74a2ea1a9059f85a2c61.stex" ]
 
 [params]
 

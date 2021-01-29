@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tmp_dog_track.png-f92f58b8d0f883f60a1fd5a0a7bbd4df.stex"
+path="res://.import/tmp_world.png-0f70cee42297189c26d306e26139bb91.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/world/tmp_dog_track.png"
-dest_files=[ "res://.import/tmp_dog_track.png-f92f58b8d0f883f60a1fd5a0a7bbd4df.stex" ]
+source_file="res://assets/images/world/tmp_world.png"
+dest_files=[ "res://.import/tmp_world.png-0f70cee42297189c26d306e26139bb91.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

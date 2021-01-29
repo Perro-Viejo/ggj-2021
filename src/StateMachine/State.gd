@@ -93,12 +93,9 @@ func physics_process(delta) -> void:
 		
 	if dir != Vector2(0,0) and not owner.is_moving:
 		_state_machine.transition_to_state(_state_machine.STATES.WALK)
+		owner.update_camera_limits()
 	elif dir == Vector2(0,0) and owner.is_moving:
 		_state_machine.transition_to_state(_state_machine.STATES.IDLE)
-
-	if owner.grabbing and owner.node_to_interact:
-		owner.node_to_interact.global_position = owner.global_position
-		owner.node_to_interact.position.y -= 7
 
 
 func enter(msg: Dictionary = {}) -> void:
