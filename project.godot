@@ -1,0 +1,333 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Actor",
+"language": "GDScript",
+"path": "res://src/Characters/Actor.gd"
+}, {
+"base": "Label",
+"class": "Autofill",
+"language": "GDScript",
+"path": "res://src/GUI/Dialog/Autofill.gd"
+}, {
+"base": "CanvasLayer",
+"class": "BlockingDialogBox",
+"language": "GDScript",
+"path": "res://addons/blocking_dialog_box/blocking_dialog_box.gd"
+}, {
+"base": "CanvasLayer",
+"class": "BlockingInputBox",
+"language": "GDScript",
+"path": "res://addons/blocking_dialog_box/blocking_input_box.gd"
+}, {
+"base": "CanvasLayer",
+"class": "BlockingListSelection",
+"language": "GDScript",
+"path": "res://addons/blocking_dialog_box/blocking_list_selection.gd"
+}, {
+"base": "CanvasLayer",
+"class": "CharacterFrame",
+"language": "GDScript",
+"path": "res://src/GUI/Dialog/CharacterFrame.gd"
+}, {
+"base": "Area2D",
+"class": "Clickable",
+"language": "GDScript",
+"path": "res://src/Objects/Clickable.gd"
+}, {
+"base": "Control",
+"class": "Dialog",
+"language": "GDScript",
+"path": "res://src/GUI/Dialog/Dialog.gd"
+}, {
+"base": "VBoxContainer",
+"class": "DialogMenu",
+"language": "GDScript",
+"path": "res://src/GUI/Dialog/DialogMenu.gd"
+}, {
+"base": "NinePatchRect",
+"class": "DialogMenuContainer",
+"language": "GDScript",
+"path": "res://src/GUI/Dialog/DialogMenuContainer.gd"
+}, {
+"base": "Button",
+"class": "DialogOption",
+"language": "GDScript",
+"path": "res://src/GUI/Dialog/DialogOption.gd"
+}, {
+"base": "Reference",
+"class": "EXP_StoryReader",
+"language": "GDScript",
+"path": "res://addons/EXP-System-Dialog/Reference_StoryReader/EXP_StoryReader.gd"
+}, {
+"base": "CanvasLayer",
+"class": "Hud",
+"language": "GDScript",
+"path": "res://src/GUI/HUD/HUD.gd"
+}, {
+"base": "Node",
+"class": "Inventory",
+"language": "GDScript",
+"path": "res://src/Inventory/Inventory.gd"
+}, {
+"base": "Node",
+"class": "Item",
+"language": "GDScript",
+"path": "res://src/Inventory/Item.gd"
+}, {
+"base": "Resource",
+"class": "MyAudioData",
+"language": "GDScript",
+"path": "res://src/Audio/AudioData.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "NPC",
+"language": "GDScript",
+"path": "res://src/Characters/NPC/NPC.gd"
+}, {
+"base": "Area2D",
+"class": "Pickable",
+"language": "GDScript",
+"path": "res://src/Pickables/Pickable.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://src/Characters/Player/Player.gd"
+}, {
+"base": "Node2D",
+"class": "Room",
+"language": "GDScript",
+"path": "res://src/Levels/Hacienda/Room.gd"
+}, {
+"base": "Node",
+"class": "SoundManagerModule",
+"language": "GDScript",
+"path": "res://addons/sound_manager/module/internal_scripts/SoundManager_config.gd"
+}, {
+"base": "Node2D",
+"class": "State",
+"language": "GDScript",
+"path": "res://src/StateMachine/State.gd"
+}, {
+"base": "Node2D",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://src/StateMachine/StateMachine.gd"
+}, {
+"base": "Area2D",
+"class": "Switch",
+"language": "GDScript",
+"path": "res://src/Objects/Switch.gd"
+}, {
+"base": "Area2D",
+"class": "Switchable",
+"language": "GDScript",
+"path": "res://src/Objects/Switchable.gd"
+} ]
+_global_script_class_icons={
+"Actor": "",
+"Autofill": "",
+"BlockingDialogBox": "",
+"BlockingInputBox": "",
+"BlockingListSelection": "",
+"CharacterFrame": "",
+"Clickable": "",
+"Dialog": "",
+"DialogMenu": "",
+"DialogMenuContainer": "",
+"DialogOption": "",
+"EXP_StoryReader": "",
+"Hud": "",
+"Inventory": "",
+"Item": "",
+"MyAudioData": "",
+"NPC": "",
+"Pickable": "",
+"Player": "",
+"Room": "",
+"SoundManagerModule": "",
+"State": "",
+"StateMachine": "",
+"Switch": "",
+"Switchable": ""
+}
+
+[application]
+
+config/name="GGJ 2021"
+config/description="Usa las luces de tu linterna para buscar los signos del zodiaco en la perdición y completa así el mazo que tu amo necesita para competir en el MEGA-TORNEO-DE-CARTAS-DE-LOS-SERES-ULTRA-PODEROSOS."
+run/main_scene="res://src/Game/Game.tscn"
+config/icon="res://icon.png"
+
+[audio]
+
+mix_rate=48000
+
+[autoload]
+
+SceneLoader="*res://src/Autoload/SceneLoader.gd"
+Settings="*res://src/Autoload/Settings.gd"
+GUIManager="*res://src/Autoload/GUIManager.gd"
+Data="*res://src/Autoload/Data.gd"
+Utils="*res://src/Autoload/Utils.gd"
+AudioEvent="*res://src/Autoload/Events/AudioEvent.gd"
+DialogEvent="*res://src/Autoload/Events/DialogEvent.gd"
+GuiEvent="*res://src/Autoload/Events/GUIEvent.gd"
+HudEvent="*res://src/Autoload/Events/HUDEvent.gd"
+IntroductionEvent="*res://src/Autoload/Events/IntroductionEvent.gd"
+PlayerEvent="*res://src/Autoload/Events/PlayerEvent.gd"
+SectionEvent="*res://src/Autoload/Events/SectionEvent.gd"
+SwitchEvent="*res://src/Autoload/Events/SwitchEvent.gd"
+WorldEvent="*res://src/Autoload/Events/WorldEvent.gd"
+SoundManager="*res://addons/sound_manager/module/SoundManager.tscn"
+
+[debug]
+
+gdscript/warnings/unused_variable=false
+gdscript/warnings/unused_argument=false
+gdscript/warnings/narrowing_conversion=false
+gdscript/warnings/unused_signal=false
+gdscript/warnings/return_value_discarded=false
+
+[display]
+
+window/size/width=1280
+window/size/height=548
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "EXP-System-Dialog", "blocking_dialog_box", "sound_manager" )
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
+csv={
+
+}
+
+[input]
+
+ui_accept={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777222,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_select={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_cancel={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":11,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+ui_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+ui_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+ui_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+Right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
+ ]
+}
+Left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":-1.0,"script":null)
+ ]
+}
+Up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":-1.0,"script":null)
+ ]
+}
+Down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":1.0,"script":null)
+ ]
+}
+light_1={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":49,"unicode":0,"echo":false,"script":null)
+ ]
+}
+light_2={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":50,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[locale]
+
+test="es"
+fallback="es"
+translations=PoolStringArray( "res://assets/localization/localization.es.translation", "res://assets/localization/localization.en.translation" )
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"

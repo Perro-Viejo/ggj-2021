@@ -1,0 +1,302 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/EXP-System-Dialog/Resource_EditorStory/EXP_EditorStory.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+TYPE = "EXP_Story_editor"
+names = {
+"DialogTest": 1
+}
+story = {
+1: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "Diálogo de prueba entre Rico, Lupe y Ana María mientras Quemamais escucha.",
+"name": "DialogTest",
+"nodes": {
+1: {
+"graph_offset": Vector2( -20, -120 ),
+"links": {
+0: 9
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "start",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 60, 200 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+	\"actor\": \"Rico\",
+	\"action\": \"SPEAK\",
+	\"line\": \"Oiga Lupe. ¿Quiere que se la chupe?\",
+	\"emotion\": \"thinking\"
+}",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 100, 360 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+	\"actor\": \"Lupe\",
+	\"action\": \"SPEAK\",
+	\"line\": \"Pues sí pero pilas. Donde Mamá Is nos vea se le pega al chupo.\",
+	\"emotion\": \"worried\"
+}",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 140, 520 ),
+"links": {
+0: 11
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+	\"actor\": \"Ana María\",
+	\"action\": \"SPEAK\",
+	\"line\": \"¡No puede ser! Lupe es de los que ve la Champions...\",
+	\"emotion\": \"sad\"
+}",
+"type": "line"
+},
+5: {
+"graph_offset": Vector2( 260, 1000 ),
+"links": {
+0: 10
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+	\"actor\": \"Ana María\",
+	\"action\": \"SPEAK\",
+	\"line\": \"Tanto ir al gimnasio y hacer dieta pa' ni mierda\",
+	\"emotion\": \"angry\"
+}",
+"type": "line"
+},
+6: {
+"graph_offset": Vector2( 340, 1320 ),
+"links": {
+0: 7
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+	\"actor\": \"Rico\",
+	\"action\": \"SPEAK\",
+	\"line\": \"Que se meta un palo la vieja esa\",
+	\"emotion\": \"angry\"
+}",
+"type": "line"
+},
+7: {
+"graph_offset": Vector2( 380, 1480 ),
+"links": {
+0: 13
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+	\"actor\": \"Lupe\",
+	\"action\": \"SPEAK\",
+	\"line\": \"Ahora sí se me puso como para partir cocos\",
+	\"emotion\": \"excited\"
+}",
+"type": "line"
+},
+8: {
+"graph_offset": Vector2( 2000, 1680 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "end",
+"type": "line"
+},
+9: {
+"graph_offset": Vector2( 20, 40 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+	\"actor\": \"Rico\",
+	\"action\": \"MOVE\",
+	\"position\": {
+		\"type\": \"REFERENCE\",
+		\"room\": \"RoomA\",
+		\"reference\": \"Desk\"
+	},
+	\"speed\": 500
+}",
+"type": "line"
+},
+10: {
+"graph_offset": Vector2( 300, 1160 ),
+"links": {
+0: 6
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+	\"actor\": \"Rico\",
+	\"action\": \"MOVE\",
+	\"position\": {
+		\"type\": \"COORDINATE\",
+		\"x\": 90,
+		\"y\": 0,
+		\"relative\": true
+	}
+}",
+"type": "line"
+},
+11: {
+"graph_offset": Vector2( 180, 680 ),
+"links": {
+0: 12
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+	\"actor\": \"Ana María\",
+	\"action\": \"MOVE\",
+	\"position\": {
+		\"type\": \"COORDINATE\",
+		\"x\": 80,
+		\"y\": 0,
+		\"relative\": true
+	},
+	\"speed\": 600
+}",
+"type": "line"
+},
+12: {
+"graph_offset": Vector2( 220, 840 ),
+"links": {
+0: 5
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+	\"actor\": \"Ana María\",
+	\"action\": \"MOVE\",
+	\"position\": {
+		\"type\": \"COORDINATE\",
+		\"x\": -80,
+		\"y\": 0,
+		\"relative\": true
+	},
+	\"speed\": 600
+}",
+"type": "line"
+},
+13: {
+"graph_offset": Vector2( 420, 1640 ),
+"links": {
+0: 14,
+1: 15,
+2: 16
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 3,
+"text": "{
+	\"actor\": \"Player\",
+	\"action\": \"INTERACT\",
+	\"options\": [
+		{
+			\"line\": \"Te la voy a meter hasta faca\",
+			\"time\": -1,
+			\"voice\": \"Rico\"
+		},
+		{
+			\"line\": \"Rico, ¿estás por aquí?\",
+			\"time\": -1,
+			\"voice\": \"Ana María\"
+		},
+		{
+			\"line\": \"¡Les gusta por Detroit!\",
+			\"time\": -1,
+			\"voice\": \"Quemamais\"
+		}
+	]
+}",
+"type": "line"
+},
+14: {
+"graph_offset": Vector2( 960, 1480 ),
+"links": {
+0: 17
+},
+"rect_size": Vector2( 441, 150 ),
+"slot_amount": 1,
+"text": "{
+	\"actor\": \"Ana María\",
+	\"action\": \"SPEAK\",
+	\"line\": \"¡Ugh! Qué asco...\",
+	\"emotion\": \"angry\"
+}",
+"type": "line"
+},
+15: {
+"graph_offset": Vector2( 960, 1680 ),
+"links": {
+0: 8
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+	\"actor\": \"Lupe\",
+	\"action\": \"SPEAK\",
+	\"line\": \"La puta que nos parió, viene Ana María\",
+	\"emotion\": \"worried\"
+}",
+"type": "line"
+},
+16: {
+"graph_offset": Vector2( 960, 1860 ),
+"links": {
+0: 8
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+	\"actor\": \"Rico\",
+	\"action\": \"SPEAK\",
+	\"line\": \"Pajarraco hijueputa\",
+	\"emotion\": \"angry\"
+}",
+"type": "line"
+},
+17: {
+"graph_offset": Vector2( 1480, 1480 ),
+"links": {
+0: 8
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+	\"actor\": \"Ana María\",
+	\"action\": \"SPEAK\",
+	\"line\": \"No quiero ver cómo se machucan la popó\",
+	\"emotion\": \"sad\"
+}",
+"type": "line"
+}
+}
+}
+}
+available_dids = [  ]
+groups = [  ]

@@ -1,0 +1,520 @@
+[gd_scene load_steps=90 format=2]
+
+[ext_resource path="res://src/Audio/AudioManager.gd" type="Script" id=1]
+[ext_resource path="res://assets/audio/ui_whoosh.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/ui_open.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/ui_hover_01.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/ui_select.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/ui_sub.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/ui_transition.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/ui_hover_02.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/ui_title.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/audio/ui_bubble_op.ogg" type="AudioStream" id=10]
+[ext_resource path="res://assets/audio/ui_button_pop.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/audio/ui_close.ogg" type="AudioStream" id=12]
+[ext_resource path="res://src/Audio/RandomTool.gd" type="Script" id=13]
+[ext_resource path="res://assets/audio/archive/ui_back.ogg" type="AudioStream" id=14]
+[ext_resource path="res://assets/audio/ui_write.ogg" type="AudioStream" id=15]
+[ext_resource path="res://assets/audio/sfx_fly.ogg" type="AudioStream" id=16]
+[ext_resource path="res://assets/audio/ui_player_change_02.ogg" type="AudioStream" id=17]
+[ext_resource path="res://assets/audio/ui_player_hover_01.ogg" type="AudioStream" id=18]
+[ext_resource path="res://assets/audio/ui_player_change_01.ogg" type="AudioStream" id=19]
+[ext_resource path="res://assets/audio/ui_player_cl.ogg" type="AudioStream" id=20]
+[ext_resource path="res://assets/audio/ui_player_op.ogg" type="AudioStream" id=21]
+[ext_resource path="res://assets/audio/ui_player_hover_02.ogg" type="AudioStream" id=22]
+[ext_resource path="res://assets/audio/ui_player_show.ogg" type="AudioStream" id=23]
+[ext_resource path="res://assets/audio/bg_road.ogg" type="AudioStream" id=24]
+[ext_resource path="res://assets/audio/fs_ana_01.ogg" type="AudioStream" id=25]
+[ext_resource path="res://assets/audio/fs_ana_02.ogg" type="AudioStream" id=26]
+[ext_resource path="res://assets/audio/sfx_drawer_open.ogg" type="AudioStream" id=27]
+[ext_resource path="res://assets/audio/fs_is_01.ogg" type="AudioStream" id=28]
+[ext_resource path="res://assets/audio/fs_lupe_01.ogg" type="AudioStream" id=29]
+[ext_resource path="res://assets/audio/fs_lupe_02.ogg" type="AudioStream" id=30]
+[ext_resource path="res://assets/audio/fs_rico_03.ogg" type="AudioStream" id=31]
+[ext_resource path="res://assets/audio/fs_ana_03.ogg" type="AudioStream" id=32]
+[ext_resource path="res://assets/audio/bg_stable.ogg" type="AudioStream" id=33]
+[ext_resource path="res://assets/audio/fs_rico_02.ogg" type="AudioStream" id=34]
+[ext_resource path="res://assets/audio/fs_is_03.ogg" type="AudioStream" id=35]
+[ext_resource path="res://assets/audio/fs_is_02.ogg" type="AudioStream" id=36]
+[ext_resource path="res://assets/audio/fs_lupe_03.ogg" type="AudioStream" id=37]
+[ext_resource path="res://assets/audio/bg_hacienda.ogg" type="AudioStream" id=38]
+[ext_resource path="res://assets/audio/fs_rico_01.ogg" type="AudioStream" id=39]
+[ext_resource path="res://assets/audio/ui_transition_circle_out.ogg" type="AudioStream" id=40]
+[ext_resource path="res://assets/audio/ui_transition_circle_in.ogg" type="AudioStream" id=41]
+[ext_resource path="res://assets/audio/vo/vo_lupe_happy_01.ogg" type="AudioStream" id=42]
+[ext_resource path="res://assets/audio/vo/vo_ana_surprised_01.ogg" type="AudioStream" id=43]
+[ext_resource path="res://assets/audio/vo/vo_ana_sad_03.ogg" type="AudioStream" id=44]
+[ext_resource path="res://assets/audio/vo/vo_ana_thinking_01.ogg" type="AudioStream" id=45]
+[ext_resource path="res://assets/audio/vo/vo_lupe_angry_02.ogg" type="AudioStream" id=46]
+[ext_resource path="res://assets/audio/vo/vo_lupe_angry_01.ogg" type="AudioStream" id=47]
+[ext_resource path="res://assets/audio/vo/vo_ana_excited_01.ogg" type="AudioStream" id=48]
+[ext_resource path="res://assets/audio/vo/vo_lupe_excited_02.ogg" type="AudioStream" id=49]
+[ext_resource path="res://assets/audio/vo/vo_ana_happy_01.ogg" type="AudioStream" id=50]
+[ext_resource path="res://assets/audio/vo/vo_ana_thinking_03.ogg" type="AudioStream" id=51]
+[ext_resource path="res://assets/audio/vo/vo_ana_excited_03.ogg" type="AudioStream" id=52]
+[ext_resource path="res://assets/audio/vo/vo_ana_excited_02.ogg" type="AudioStream" id=53]
+[ext_resource path="res://assets/audio/vo/vo_lupe_angry_03.ogg" type="AudioStream" id=54]
+[ext_resource path="res://assets/audio/vo/vo_ana_angry_01.ogg" type="AudioStream" id=55]
+[ext_resource path="res://assets/audio/vo/vo_ana_normal_03.ogg" type="AudioStream" id=56]
+[ext_resource path="res://assets/audio/vo/vo_lupe_happy_02.ogg" type="AudioStream" id=57]
+[ext_resource path="res://assets/audio/vo/vo_lupe_happy_03.ogg" type="AudioStream" id=58]
+[ext_resource path="res://assets/audio/vo/vo_lupe_normal_01.ogg" type="AudioStream" id=59]
+[ext_resource path="res://assets/audio/vo/vo_ana_surprised_03.ogg" type="AudioStream" id=60]
+[ext_resource path="res://assets/audio/vo/vo_ana_normal_04.ogg" type="AudioStream" id=61]
+[ext_resource path="res://assets/audio/vo/vo_lupe_normal_02.ogg" type="AudioStream" id=62]
+[ext_resource path="res://assets/audio/vo/vo_lupe_normal_03.ogg" type="AudioStream" id=63]
+[ext_resource path="res://assets/audio/vo/vo_ana_sad_02.ogg" type="AudioStream" id=64]
+[ext_resource path="res://assets/audio/vo/vo_ana_surprised_02.ogg" type="AudioStream" id=65]
+[ext_resource path="res://assets/audio/vo/vo_lupe_normal_04.ogg" type="AudioStream" id=66]
+[ext_resource path="res://assets/audio/vo/vo_lupe_sad_01.ogg" type="AudioStream" id=67]
+[ext_resource path="res://assets/audio/vo/vo_ana_thinking_02.ogg" type="AudioStream" id=68]
+[ext_resource path="res://assets/audio/vo/vo_ana_angry_02.ogg" type="AudioStream" id=69]
+[ext_resource path="res://assets/audio/vo/vo_ana_happy_03.ogg" type="AudioStream" id=70]
+[ext_resource path="res://assets/audio/vo/vo_ana_normal_01.ogg" type="AudioStream" id=71]
+[ext_resource path="res://assets/audio/vo/vo_lupe_excited_01.ogg" type="AudioStream" id=72]
+[ext_resource path="res://assets/audio/vo/vo_ana_normal_02.ogg" type="AudioStream" id=73]
+[ext_resource path="res://assets/audio/vo/vo_ana_sad_01.ogg" type="AudioStream" id=74]
+[ext_resource path="res://assets/audio/vo/vo_lupe_excited_03.ogg" type="AudioStream" id=75]
+[ext_resource path="res://assets/audio/vo/vo_ana_angry_03.ogg" type="AudioStream" id=76]
+[ext_resource path="res://assets/audio/vo/vo_ana_happy_02.ogg" type="AudioStream" id=77]
+[ext_resource path="res://assets/audio/vo/vo_lupe_worried_01.ogg" type="AudioStream" id=78]
+[ext_resource path="res://assets/audio/vo/vo_lupe_sad_03.ogg" type="AudioStream" id=79]
+[ext_resource path="res://assets/audio/vo/vo_lupe_surprised_01.ogg" type="AudioStream" id=80]
+[ext_resource path="res://assets/audio/vo/vo_lupe_thinking_01.ogg" type="AudioStream" id=81]
+[ext_resource path="res://assets/audio/vo/vo_lupe_worried_02.ogg" type="AudioStream" id=82]
+[ext_resource path="res://assets/audio/vo/vo_lupe_worried_03.ogg" type="AudioStream" id=83]
+[ext_resource path="res://assets/audio/vo/vo_lupe_surprised_03.ogg" type="AudioStream" id=84]
+[ext_resource path="res://assets/audio/vo/vo_lupe_thinking_02.ogg" type="AudioStream" id=85]
+[ext_resource path="res://assets/audio/vo/vo_lupe_thinking_03.ogg" type="AudioStream" id=86]
+[ext_resource path="res://assets/audio/vo/vo_lupe_sad_02.ogg" type="AudioStream" id=87]
+[ext_resource path="res://assets/audio/vo/vo_lupe_surprised_02.ogg" type="AudioStream" id=88]
+[ext_resource path="res://assets/audio/C_Test.wav" type="AudioStream" id=89]
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="bubble_op" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 10 )
+volume_db = -5.0
+
+[node name="popup_close" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 12 )
+
+[node name="popup_open" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 3 )
+volume_db = -8.0
+
+[node name="sub" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 6 )
+volume_db = -9.0
+pitch_scale = 1.5
+
+[node name="title" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 9 )
+
+[node name="transition" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 7 )
+
+[node name="transition_circle_in" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 41 )
+
+[node name="transition_circle_out" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 40 )
+
+[node name="whoosh" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 2 )
+
+[node name="whoosh_2" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 2 )
+pitch_scale = 0.7
+
+[node name="select" type="Node2D" parent="UI"]
+script = ExtResource( 13 )
+volume = -3.0
+min_pitch = -5.0
+max_pitch = 8.0
+
+[node name="select" type="AudioStreamPlayer" parent="UI/select"]
+stream = ExtResource( 5 )
+pitch_scale = 0.8
+
+[node name="hover" type="Node2D" parent="UI"]
+script = ExtResource( 13 )
+random_pitch = true
+min_pitch = -3.0
+max_pitch = 5.0
+
+[node name="hover_01" type="AudioStreamPlayer" parent="UI/hover"]
+stream = ExtResource( 4 )
+
+[node name="hover_02" type="AudioStreamPlayer" parent="UI/hover"]
+stream = ExtResource( 8 )
+
+[node name="move" type="Node2D" parent="UI"]
+script = ExtResource( 13 )
+volume = -9.0
+Pitch = -5.0
+random_pitch = true
+min_pitch = -3.0
+max_pitch = 5.0
+
+[node name="hover_01" type="AudioStreamPlayer" parent="UI/move"]
+stream = ExtResource( 14 )
+
+[node name="write" type="Node2D" parent="UI"]
+script = ExtResource( 13 )
+volume = -4.0
+random_pitch = true
+min_pitch = -5.0
+max_pitch = 6.0
+
+[node name="write" type="AudioStreamPlayer" parent="UI/write"]
+stream = ExtResource( 15 )
+volume_db = -9.0
+
+[node name="button_pop" type="Node2D" parent="UI"]
+script = ExtResource( 13 )
+volume = -8.0
+random_pitch = true
+min_pitch = -3.0
+max_pitch = 3.0
+
+[node name="button_pop" type="AudioStreamPlayer" parent="UI/button_pop"]
+stream = ExtResource( 11 )
+volume_db = -10.0
+
+[node name="player_op" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 21 )
+
+[node name="player_cl" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 20 )
+
+[node name="player_show" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 23 )
+
+[node name="player_hover" type="Node2D" parent="UI"]
+script = ExtResource( 13 )
+volume = -8.0
+random_pitch = true
+min_pitch = -1.0
+max_pitch = 1.0
+
+[node name="player_hover_01" type="AudioStreamPlayer" parent="UI/player_hover"]
+stream = ExtResource( 18 )
+
+[node name="player_hover_02" type="AudioStreamPlayer" parent="UI/player_hover"]
+stream = ExtResource( 22 )
+
+[node name="player_change" type="Node2D" parent="UI"]
+script = ExtResource( 13 )
+volume = -8.0
+random_pitch = true
+min_pitch = -3.0
+max_pitch = 3.0
+
+[node name="player_change_01" type="AudioStreamPlayer" parent="UI/player_change"]
+stream = ExtResource( 19 )
+
+[node name="player_change_02" type="AudioStreamPlayer" parent="UI/player_change"]
+stream = ExtResource( 17 )
+
+[node name="MX" type="Node2D" parent="."]
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Move" type="Node2D" parent="Player"]
+script = ExtResource( 13 )
+random_volume = true
+min_volume = -3.0
+max_volume = 2.0
+random_pitch = true
+min_pitch = 3.0
+max_pitch = -2.0
+
+[node name="Fly" type="AudioStreamPlayer" parent="Player/Move"]
+stream = ExtResource( 16 )
+volume_db = -7.0
+
+[node name="BG" type="Node2D" parent="."]
+
+[node name="Hacienda" type="AudioStreamPlayer" parent="BG"]
+stream = ExtResource( 38 )
+
+[node name="Camino" type="AudioStreamPlayer" parent="BG"]
+stream = ExtResource( 24 )
+
+[node name="Establo" type="AudioStreamPlayer" parent="BG"]
+stream = ExtResource( 33 )
+
+[node name="FS" type="Node2D" parent="."]
+
+[node name="AnaMaria" type="Node2D" parent="FS"]
+script = ExtResource( 13 )
+random_volume = true
+min_volume = -2.0
+random_pitch = true
+min_pitch = -2.0
+max_pitch = 2.0
+
+[node name="FS_01" type="AudioStreamPlayer2D" parent="FS/AnaMaria"]
+stream = ExtResource( 25 )
+
+[node name="FS_02" type="AudioStreamPlayer2D" parent="FS/AnaMaria"]
+stream = ExtResource( 26 )
+
+[node name="FS_03" type="AudioStreamPlayer2D" parent="FS/AnaMaria"]
+stream = ExtResource( 32 )
+
+[node name="Is" type="Node2D" parent="FS"]
+script = ExtResource( 13 )
+random_volume = true
+min_volume = -2.0
+random_pitch = true
+min_pitch = -2.0
+max_pitch = 2.0
+
+[node name="FS_01" type="AudioStreamPlayer2D" parent="FS/Is"]
+stream = ExtResource( 28 )
+
+[node name="FS_02" type="AudioStreamPlayer2D" parent="FS/Is"]
+stream = ExtResource( 36 )
+
+[node name="FS_03" type="AudioStreamPlayer2D" parent="FS/Is"]
+stream = ExtResource( 35 )
+
+[node name="Lupe" type="Node2D" parent="FS"]
+script = ExtResource( 13 )
+random_volume = true
+min_volume = -2.0
+random_pitch = true
+min_pitch = -2.0
+max_pitch = 2.0
+
+[node name="FS_01" type="AudioStreamPlayer2D" parent="FS/Lupe"]
+stream = ExtResource( 29 )
+
+[node name="FS_02" type="AudioStreamPlayer2D" parent="FS/Lupe"]
+stream = ExtResource( 30 )
+
+[node name="FS_03" type="AudioStreamPlayer2D" parent="FS/Lupe"]
+stream = ExtResource( 37 )
+
+[node name="Rico" type="Node2D" parent="FS"]
+script = ExtResource( 13 )
+random_volume = true
+min_volume = -2.0
+random_pitch = true
+min_pitch = -2.0
+max_pitch = 2.0
+
+[node name="FS_01" type="AudioStreamPlayer2D" parent="FS/Rico"]
+stream = ExtResource( 39 )
+
+[node name="FS_02" type="AudioStreamPlayer2D" parent="FS/Rico"]
+stream = ExtResource( 34 )
+
+[node name="FS_03" type="AudioStreamPlayer2D" parent="FS/Rico"]
+stream = ExtResource( 31 )
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="drawer_op" type="AudioStreamPlayer" parent="Objects"]
+stream = ExtResource( 27 )
+
+[node name="DX" type="Node2D" parent="."]
+
+[node name="ana_maría" type="Node2D" parent="DX"]
+
+[node name="angry" type="Node2D" parent="DX/ana_maría"]
+script = ExtResource( 13 )
+
+[node name="vo_01" type="AudioStreamPlayer" parent="DX/ana_maría/angry"]
+stream = ExtResource( 55 )
+
+[node name="vo_02" type="AudioStreamPlayer" parent="DX/ana_maría/angry"]
+stream = ExtResource( 69 )
+
+[node name="vo_03" type="AudioStreamPlayer" parent="DX/ana_maría/angry"]
+stream = ExtResource( 76 )
+
+[node name="excited" type="Node2D" parent="DX/ana_maría"]
+script = ExtResource( 13 )
+
+[node name="vo_01" type="AudioStreamPlayer" parent="DX/ana_maría/excited"]
+stream = ExtResource( 48 )
+
+[node name="vo_02" type="AudioStreamPlayer" parent="DX/ana_maría/excited"]
+stream = ExtResource( 53 )
+
+[node name="vo_03" type="AudioStreamPlayer" parent="DX/ana_maría/excited"]
+stream = ExtResource( 52 )
+
+[node name="happy" type="Node2D" parent="DX/ana_maría"]
+script = ExtResource( 13 )
+
+[node name="vo_01" type="AudioStreamPlayer" parent="DX/ana_maría/happy"]
+stream = ExtResource( 50 )
+
+[node name="vo_02" type="AudioStreamPlayer" parent="DX/ana_maría/happy"]
+stream = ExtResource( 77 )
+
+[node name="vo_03" type="AudioStreamPlayer" parent="DX/ana_maría/happy"]
+stream = ExtResource( 70 )
+
+[node name="normal" type="Node2D" parent="DX/ana_maría"]
+script = ExtResource( 13 )
+
+[node name="vo_01" type="AudioStreamPlayer" parent="DX/ana_maría/normal"]
+stream = ExtResource( 71 )
+
+[node name="vo_02" type="AudioStreamPlayer" parent="DX/ana_maría/normal"]
+stream = ExtResource( 73 )
+
+[node name="vo_03" type="AudioStreamPlayer" parent="DX/ana_maría/normal"]
+stream = ExtResource( 56 )
+
+[node name="vo_04" type="AudioStreamPlayer" parent="DX/ana_maría/normal"]
+stream = ExtResource( 61 )
+
+[node name="sad" type="Node2D" parent="DX/ana_maría"]
+script = ExtResource( 13 )
+
+[node name="vo_01" type="AudioStreamPlayer" parent="DX/ana_maría/sad"]
+stream = ExtResource( 74 )
+
+[node name="vo_02" type="AudioStreamPlayer" parent="DX/ana_maría/sad"]
+stream = ExtResource( 64 )
+
+[node name="vo_03" type="AudioStreamPlayer" parent="DX/ana_maría/sad"]
+stream = ExtResource( 44 )
+
+[node name="surprised" type="Node2D" parent="DX/ana_maría"]
+script = ExtResource( 13 )
+
+[node name="vo_01" type="AudioStreamPlayer" parent="DX/ana_maría/surprised"]
+stream = ExtResource( 43 )
+
+[node name="vo_02" type="AudioStreamPlayer" parent="DX/ana_maría/surprised"]
+stream = ExtResource( 65 )
+
+[node name="vo_03" type="AudioStreamPlayer" parent="DX/ana_maría/surprised"]
+stream = ExtResource( 60 )
+
+[node name="thinking" type="Node2D" parent="DX/ana_maría"]
+script = ExtResource( 13 )
+
+[node name="vo_01" type="AudioStreamPlayer" parent="DX/ana_maría/thinking"]
+stream = ExtResource( 45 )
+
+[node name="vo_02" type="AudioStreamPlayer" parent="DX/ana_maría/thinking"]
+stream = ExtResource( 68 )
+
+[node name="vo_03" type="AudioStreamPlayer" parent="DX/ana_maría/thinking"]
+stream = ExtResource( 51 )
+
+[node name="lupe" type="Node2D" parent="DX"]
+
+[node name="angry" type="Node2D" parent="DX/lupe"]
+script = ExtResource( 13 )
+
+[node name="vo_01" type="AudioStreamPlayer" parent="DX/lupe/angry"]
+stream = ExtResource( 47 )
+
+[node name="vo_02" type="AudioStreamPlayer" parent="DX/lupe/angry"]
+stream = ExtResource( 46 )
+
+[node name="vo_03" type="AudioStreamPlayer" parent="DX/lupe/angry"]
+stream = ExtResource( 54 )
+
+[node name="excited" type="Node2D" parent="DX/lupe"]
+script = ExtResource( 13 )
+
+[node name="vo_01" type="AudioStreamPlayer" parent="DX/lupe/excited"]
+stream = ExtResource( 72 )
+
+[node name="vo_02" type="AudioStreamPlayer" parent="DX/lupe/excited"]
+stream = ExtResource( 49 )
+
+[node name="vo_03" type="AudioStreamPlayer" parent="DX/lupe/excited"]
+stream = ExtResource( 75 )
+
+[node name="happy" type="Node2D" parent="DX/lupe"]
+script = ExtResource( 13 )
+
+[node name="vo_01" type="AudioStreamPlayer" parent="DX/lupe/happy"]
+stream = ExtResource( 42 )
+
+[node name="vo_02" type="AudioStreamPlayer" parent="DX/lupe/happy"]
+stream = ExtResource( 57 )
+
+[node name="vo_03" type="AudioStreamPlayer" parent="DX/lupe/happy"]
+stream = ExtResource( 58 )
+
+[node name="normal" type="Node2D" parent="DX/lupe"]
+script = ExtResource( 13 )
+
+[node name="vo_01" type="AudioStreamPlayer" parent="DX/lupe/normal"]
+stream = ExtResource( 59 )
+
+[node name="vo_02" type="AudioStreamPlayer" parent="DX/lupe/normal"]
+stream = ExtResource( 62 )
+
+[node name="vo_03" type="AudioStreamPlayer" parent="DX/lupe/normal"]
+stream = ExtResource( 63 )
+
+[node name="vo_04" type="AudioStreamPlayer" parent="DX/lupe/normal"]
+stream = ExtResource( 66 )
+
+[node name="sad" type="Node2D" parent="DX/lupe"]
+script = ExtResource( 13 )
+
+[node name="vo_01" type="AudioStreamPlayer" parent="DX/lupe/sad"]
+stream = ExtResource( 67 )
+
+[node name="vo_02" type="AudioStreamPlayer" parent="DX/lupe/sad"]
+stream = ExtResource( 87 )
+
+[node name="vo_03" type="AudioStreamPlayer" parent="DX/lupe/sad"]
+stream = ExtResource( 79 )
+
+[node name="surprised" type="Node2D" parent="DX/lupe"]
+script = ExtResource( 13 )
+
+[node name="vo_01" type="AudioStreamPlayer" parent="DX/lupe/surprised"]
+stream = ExtResource( 80 )
+
+[node name="vo_02" type="AudioStreamPlayer" parent="DX/lupe/surprised"]
+stream = ExtResource( 88 )
+
+[node name="vo_03" type="AudioStreamPlayer" parent="DX/lupe/surprised"]
+stream = ExtResource( 84 )
+
+[node name="thinking" type="Node2D" parent="DX/lupe"]
+script = ExtResource( 13 )
+
+[node name="vo_01" type="AudioStreamPlayer" parent="DX/lupe/thinking"]
+stream = ExtResource( 81 )
+
+[node name="vo_02" type="AudioStreamPlayer" parent="DX/lupe/thinking"]
+stream = ExtResource( 85 )
+
+[node name="vo_03" type="AudioStreamPlayer" parent="DX/lupe/thinking"]
+stream = ExtResource( 86 )
+
+[node name="worried" type="Node2D" parent="DX/lupe"]
+script = ExtResource( 13 )
+
+[node name="vo_01" type="AudioStreamPlayer" parent="DX/lupe/worried"]
+stream = ExtResource( 78 )
+
+[node name="vo_02" type="AudioStreamPlayer" parent="DX/lupe/worried"]
+stream = ExtResource( 82 )
+
+[node name="vo_03" type="AudioStreamPlayer" parent="DX/lupe/worried"]
+stream = ExtResource( 83 )
+
+[node name="CTest" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 89 )
+pitch_scale = 0.01

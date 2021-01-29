@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/GUI/Dialog/DialogMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/images/gui/dialog_menu_bg.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/quemamais_talk.png" type="Texture" id=3]
+[ext_resource path="res://src/GUI/Dialog/DialogMenuContainer.gd" type="Script" id=5]
+[ext_resource path="res://assets/images/gui/dialog_menu_close.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gui/quemamais_voice.png" type="Texture" id=7]
+
+[node name="DialogMenuContainer" type="NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -587.0
+margin_bottom = -755.0
+grow_horizontal = 0
+texture = ExtResource( 2 )
+patch_margin_left = 100
+patch_margin_right = 103
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="DialogMenu" parent="." instance=ExtResource( 1 )]
+margin_left = 80.0
+margin_top = 12.0
+margin_right = -245.0
+margin_bottom = -9.0
+custom_constants/separation = 4
+alignment = 1
+tween_path = NodePath("../Tween")
+
+[node name="Avatar" type="TextureRect" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -180.0
+margin_top = -68.5
+margin_right = -148.0
+margin_bottom = -36.5
+rect_scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Voice" type="TextureRect" parent="."]
+margin_left = 477.0
+margin_top = 14.0
+margin_right = 501.0
+margin_bottom = 37.0
+rect_scale = Vector2( 4, 4 )
+texture = ExtResource( 7 )
+
+[node name="VoiceIcon" type="TextureRect" parent="Voice"]
+margin_left = 2.75
+margin_top = 6.5
+margin_right = 10.75
+margin_bottom = 14.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close" type="TextureButton" parent="."]
+margin_left = 16.0
+margin_top = 81.0
+margin_right = 54.0
+margin_bottom = 119.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

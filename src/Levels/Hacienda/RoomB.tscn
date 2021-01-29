@@ -1,0 +1,99 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/images/world/room_b.png" type="Texture" id=1]
+[ext_resource path="res://src/Levels/Hacienda/RoomTemplate.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Objects/Clickable.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/images/world/room_b_desk.png" type="Texture" id=4]
+[ext_resource path="res://src/Levels/Hacienda/RoomB.gd" type="Script" id=5]
+[ext_resource path="res://src/Objects/Clickable.gd" type="Script" id=6]
+[ext_resource path="res://src/Audio/MusicTrigger.gd" type="Script" id=7]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8.84067, 46.2992 )
+
+[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 18, 50 )
+
+[node name="RoomB" instance=ExtResource( 2 )]
+script = ExtResource( 5 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 1 )
+
+[node name="Desk" type="Sprite" parent="." index="1"]
+position = Vector2( -38, 28 )
+scale = Vector2( 4, 4 )
+z_index = 2
+texture = ExtResource( 4 )
+hframes = 2
+__meta__ = {
+"_editor_description_": "w"
+}
+
+[node name="Entrance" type="Position2D" parent="Points" index="0"]
+position = Vector2( 128, -58 )
+
+[node name="PictureA" type="Position2D" parent="Points" index="1"]
+position = Vector2( 56, -72 )
+
+[node name="PictureB" type="Position2D" parent="Points" index="2"]
+position = Vector2( 104, -72 )
+
+[node name="Bookcase" type="Position2D" parent="Points" index="3"]
+position = Vector2( 100, 32 )
+
+[node name="Window" type="Position2D" parent="Points" index="4"]
+position = Vector2( -124, 4 )
+
+[node name="Desk" type="Position2D" parent="Points" index="5"]
+position = Vector2( 26, 48 )
+
+[node name="Clickable" parent="Targets" index="0" instance=ExtResource( 3 )]
+position = Vector2( 68, 90 )
+max_distance = 200.06
+trigger_dialog = "Palito"
+look_to = 2
+
+[node name="MusicTrigger" type="Area2D" parent="." index="4"]
+position = Vector2( 68, 90 )
+input_pickable = false
+monitoring = false
+script = ExtResource( 7 )
+music_cue = "mx_cue_01"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MusicTrigger" index="0"]
+position = Vector2( -78.0111, -140.869 )
+shape = SubResource( 3 )
+
+[node name="Clickable" parent="Objects" index="0" instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 0, 1 )
+position = Vector2( -38, 28 )
+interaction_type = "object"
+max_distance = 200.0
+trigger_dialog = "Desk"
+disable_after_interactions = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Objects/Clickable" index="0"]
+scale = Vector2( 4, 4 )
+polygon = PoolVector2Array( 15.5, -17, 16.5, -17, 16.5, -1, 15.5, -1, 15.5, 2, -5.5, 2, -5.5, 18, -16.5, 18, -16.5, -17, -15.5, -17, -15.5, -18, 15.5, -18 )
+
+[node name="CollisionShape2D" parent="Objects/Clickable" index="1"]
+shape = SubResource( 1 )
+
+[node name="Clickable2" type="Area2D" parent="Objects" index="1"]
+modulate = Color( 1, 1, 0, 1 )
+script = ExtResource( 6 )
+interaction_type = "object"
+max_distance = 200.0
+trigger_dialog = "Library"
+disable_after_interactions = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Clickable2" index="0"]
+position = Vector2( 132.021, 33.6359 )
+shape = SubResource( 2 )
+[connection signal="interacted" from="Objects/Clickable" to="." method="open_desk"]
+[connection signal="interacted" from="Objects/Clickable2" to="." method="grab_journal"]
+
+[editable path="Objects/Clickable"]
