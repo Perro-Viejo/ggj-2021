@@ -5,7 +5,7 @@
 [ext_resource path="res://src/StateMachine/StateMachine.gd" type="Script" id=3]
 [ext_resource path="res://src/Characters/Player/States/Idle.gd" type="Script" id=4]
 [ext_resource path="res://assets/images/characters/quemamais.png" type="Texture" id=5]
-[ext_resource path="res://src/StateMachine/State.gd" type="Script" id=6]
+[ext_resource path="res://src/Characters/Player/States/Move.gd" type="Script" id=6]
 [ext_resource path="res://assets/images/characters/quemamais_expressions.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/characters/voice_quemamais.png" type="Texture" id=8]
 [ext_resource path="res://src/Characters/Player/States/Walk.gd" type="Script" id=9]
@@ -82,6 +82,7 @@ editor_draw_drag_margin = true
 
 [node name="StateMachine" type="Node2D" parent="."]
 script = ExtResource( 3 )
+initial_state = "MOVE"
 
 [node name="Idle" type="Node2D" parent="StateMachine"]
 script = ExtResource( 4 )
@@ -94,7 +95,7 @@ animation = "Idle"
 [node name="Move" type="Node2D" parent="StateMachine"]
 visible = false
 script = ExtResource( 6 )
-speed = 120.0
+speed = 4.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="StateMachine/Move"]
 scale = Vector2( 4, 4 )

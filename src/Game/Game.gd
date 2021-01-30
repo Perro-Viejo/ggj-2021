@@ -32,7 +32,6 @@ func _ready()->void:
 
 	GUIManager.gui_collect_focusgroup()
 
-	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	if is_mouse_hidden:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	else:

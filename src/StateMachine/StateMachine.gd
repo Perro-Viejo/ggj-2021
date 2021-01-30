@@ -1,6 +1,8 @@
 class_name StateMachine
 extends Node2D
 
+export var initial_state := 'IDLE'
+
 onready var state: State = null
 onready var _current_state_name
 onready var _previous_state
@@ -29,6 +31,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	state.physics_process(delta)
+
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func transition_to_key(target_state_path: String, msg: Dictionary = {}) -> void:

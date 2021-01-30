@@ -10,6 +10,8 @@ var is_out: bool = false
 var is_moving = false
 var dir := Vector2.ZERO
 
+var _current_light_idx := 1
+
 onready var _light := $Light
 onready var _light_mask := $Light/Mask
 onready var _crosshair: Sprite = find_node('Crosshair')
@@ -25,6 +27,15 @@ func _ready():
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		return
+	elif event is InputEventMouseButton and event.is_pressed():
+		var amount := 0
+		if event.button_index == BUTTON_WHEEL_UP:
+			amount = -1
+		elif event.button_index == BUTTON_WHEEL_DOWN:
+			amount = 1
+		else:
+			return
+		set_light_mask(wrapi(_current_light_idx + amount, 1, 3))
 	elif event is InputEventMouseMotion:
 		_light.look_at(get_global_mouse_position())
 		_crosshair.position = get_local_mouse_position()
@@ -40,8 +51,9 @@ func set_light_mask(id := 1) -> void:
 			_light.self_modulate = Color.red
 		2:
 			_light.self_modulate = Color.pink
-	
+
 	_light.self_modulate.a = 0.5
+	_current_light_idx = id
 
 
 func update_camera_limits() -> void:
