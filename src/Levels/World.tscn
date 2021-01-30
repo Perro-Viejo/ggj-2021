@@ -1,13 +1,33 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Levels/World.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/world/tmp_dog_track.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/world/tmp_chicken_track.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/world/tmp_world.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/world/map.PNG" type="Texture" id=5]
+[ext_resource path="res://assets/images/world/tmp_unknown_track.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/world/tmp_frog_track.png" type="Texture" id=7]
+[ext_resource path="res://src/Levels/Tracks.gd" type="Script" id=8]
+[ext_resource path="res://src/Levels/PawPrint.gd" type="Script" id=9]
+[ext_resource path="res://assets/images/gui/tmp_capture_under.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/tmp_capture_progress.png" type="Texture" id=11]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id=2]
+light_mode = 2
+
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -264, 72, -404.456, 24.0271, 404.456, -24.0271, 24, -464, -208.112, 441.873, 208.112, -441.873, 760, -672 )
+}
+
+[sub_resource type="CanvasItemMaterial" id=4]
+light_mode = 2
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 20.0998
 
 [node name="World" type="Node2D"]
 script = ExtResource( 2 )
@@ -23,8 +43,12 @@ follow_viewport_enable = true
 [node name="Bg" type="Sprite" parent="."]
 z_index = -5
 texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 808, -584 )
 expressions_map = {
 "angry": -1,
 "excited": 1,
@@ -37,17 +61,65 @@ expressions_map = {
 }
 
 [node name="Tracks" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="Tween" type="Tween" parent="Tracks"]
 
 [node name="Chicken" type="Sprite" parent="Tracks"]
-light_mask = 2
 material = SubResource( 1 )
 position = Vector2( -328, 0 )
-z_index = -1
 texture = ExtResource( 4 )
 
 [node name="Dog" type="Sprite" parent="Tracks"]
 light_mask = 2
 material = SubResource( 1 )
 position = Vector2( 232, 0 )
-z_index = -2
 texture = ExtResource( 3 )
+
+[node name="Unknown" type="Sprite" parent="Tracks"]
+light_mask = 4
+material = SubResource( 2 )
+texture = ExtResource( 6 )
+
+[node name="Path2D" type="Path2D" parent="Tracks"]
+curve = SubResource( 3 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Tracks/Path2D"]
+position = Vector2( -264, 72 )
+rotation = -1.78036
+
+[node name="PawPrint" type="Sprite" parent="Tracks/Path2D/PathFollow2D"]
+light_mask = 4
+material = SubResource( 4 )
+texture = ExtResource( 7 )
+script = ExtResource( 9 )
+spawn_rate = 10.0
+lifetime = 60.0
+capture_time = 5.0
+
+[node name="Tween" type="Tween" parent="Tracks/Path2D/PathFollow2D/PawPrint"]
+
+[node name="Area2D" type="Area2D" parent="Tracks/Path2D/PathFollow2D/PawPrint"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tracks/Path2D/PathFollow2D/PawPrint/Area2D"]
+shape = SubResource( 5 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tracks/Path2D/PathFollow2D/PawPrint"]
+position = Vector2( 16.4829, 273.411 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tracks/Path2D/PathFollow2D/PawPrint/StaticBody2D"]
+position = Vector2( -16.4829, -273.411 )
+shape = SubResource( 5 )
+
+[node name="CaptureProgress" type="TextureProgress" parent="Tracks/Path2D/PathFollow2D/PawPrint"]
+margin_left = -35.0
+margin_top = -35.0
+margin_right = 5.0
+margin_bottom = 5.0
+mouse_filter = 2
+texture_under = ExtResource( 10 )
+texture_progress = ExtResource( 11 )
+fill_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}

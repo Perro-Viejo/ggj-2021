@@ -1,7 +1,7 @@
 class_name NPC
 extends "res://src/Characters/Actor.gd"
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables públicas ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ variables públicas ░░░░
 var node_to_interact: Pickable = null setget _set_node_to_interact
 var grabbing: bool = false
 var on_ground: bool = false
@@ -13,7 +13,7 @@ var dir = Vector2(0, 0)
 
 # onready var foot_area: Area2D = $FootArea
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready() -> void:
 	# Conectarse a eventos propies y de los hijos de la mamá
 	self.connect('movement_started', self, '_movement_changed')
@@ -25,7 +25,7 @@ func _ready() -> void:
 	PlayerEvent.connect('control_toggled', self, '_toggle_control')
 
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 func change_zoom(out: bool = true) -> void:
 	is_out = out
 	
@@ -39,7 +39,7 @@ func change_zoom(out: bool = true) -> void:
 func toggle_on_ground(body: Node2D, on: = false) -> void:
 	if not body.is_in_group('Floor'): return
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _toggle_control() -> void:
 	$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
 	is_paused = !is_paused

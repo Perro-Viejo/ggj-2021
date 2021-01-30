@@ -68,7 +68,7 @@ func set_volume_sliders()->void: #Initialize volume sliders
 	Music.value = Settings.VolumeMusic * 100
 	SFX.value = Settings.VolumeSFX * 100
 
-# ⋐▒▒▒ CONTROL DE PANELES ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒⋑
+# ⋐░░░ CONTROL DE PANELES ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░⋑
 func _on_option_pressed(id := -1) -> void:
 	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
 	_hide_panels()
@@ -117,7 +117,7 @@ func _close_panel() -> void:
 			break
 	_last_focus_owner.grab_focus()
 	_last_focus_owner = null
-# ⋐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ CONTROL DE PANELES ▒▒▒▒⋑
+# ⋐░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ CONTROL DE PANELES ░░░░⋑
 
 #### BUTTON SIGNALS ####
 func _on_Master_value_changed(value):

@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Objects/Clickable.gd"
 }, {
+"base": "Button",
+"class": "DefaultButton",
+"language": "GDScript",
+"path": "res://src/GUI/Buttons/DefaultButton.gd"
+}, {
 "base": "Control",
 "class": "Dialog",
 "language": "GDScript",
@@ -94,6 +99,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Characters/NPC/NPC.gd"
 }, {
+"base": "Sprite",
+"class": "PawPrint",
+"language": "GDScript",
+"path": "res://src/Levels/PawPrint.gd"
+}, {
 "base": "Area2D",
 "class": "Pickable",
 "language": "GDScript",
@@ -142,6 +152,7 @@ _global_script_class_icons={
 "BlockingListSelection": "",
 "CharacterFrame": "",
 "Clickable": "",
+"DefaultButton": "",
 "Dialog": "",
 "DialogMenu": "",
 "DialogMenuContainer": "",
@@ -152,6 +163,7 @@ _global_script_class_icons={
 "Item": "",
 "MyAudioData": "",
 "NPC": "",
+"PawPrint": "",
 "Pickable": "",
 "Player": "",
 "Room": "",
@@ -327,7 +339,6 @@ translations=PoolStringArray( "res://assets/localization/localization.es.transla
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"

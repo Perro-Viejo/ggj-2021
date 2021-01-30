@@ -28,22 +28,22 @@ export var is_current_player := false
 export var voice: Texture = null
 export var expressions_scale := Vector2.ONE
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒variables públicas ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░variables públicas ░░░░
 var path := PoolVector2Array() setget _set_path
 var velocity := Vector2.ZERO
 var current_room: Room = null
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables privadas ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ variables privadas ░░░░
 var _in_dialog := false setget set_in_dialog, is_in_dialog
 var _is_moving := false setget _set_is_moving, is_moving
 var _temporary_speed := 0
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables onready ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ variables onready ░░░░
 #onready var inventory = $Inventory
 onready var state_machine = $StateMachine
 onready var _lower_name := name.to_lower()
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready():
 	if dialog_name:
 		_lower_name = dialog_name.to_lower().replace(' ', '_')
@@ -89,7 +89,7 @@ func _physics_process(delta):
 	elif _is_moving:
 		self._is_moving = false
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 # Called when the node enters the scene tree for the first time.
 func speak(text := '', time_to_disappear := 0):
 	$StateMachine.transition_to_key('Talk')
@@ -127,7 +127,7 @@ func is_in_dialog() -> bool:
 
 func is_moving() -> bool:
 	return _is_moving
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 # Este método se llama cuando se asigna un nuevo valor a la propiedad 'path' desde
 # una clase externa (p.e. $Player.path = lo_que_sea).
 func _set_path(new_path: PoolVector2Array) -> void:

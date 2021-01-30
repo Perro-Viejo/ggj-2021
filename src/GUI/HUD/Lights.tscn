@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/GUI/HUD/Lights.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/gui/hud/tmp_light_icon.png" type="Texture" id=2]
+
+[node name="Lights" type="MarginContainer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -268.0
+margin_bottom = 84.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 8
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="HBoxContainer" type="GridContainer" parent="."]
+margin_left = 32.0
+margin_top = 8.0
+margin_right = 252.0
+margin_bottom = 84.0
+size_flags_horizontal = 8
+custom_constants/hseparation = -16
+columns = 3
+
+[node name="Red" type="TextureRect" parent="HBoxContainer"]
+modulate = Color( 0.729412, 0.337255, 0.443137, 1 )
+margin_right = 84.0
+margin_bottom = 76.0
+rect_pivot_offset = Vector2( 42, 38 )
+size_flags_vertical = 8
+texture = ExtResource( 2 )
+
+[node name="Blue" type="TextureRect" parent="HBoxContainer"]
+modulate = Color( 0.337255, 0.729412, 0.72549, 1 )
+margin_left = 68.0
+margin_right = 152.0
+margin_bottom = 76.0
+grow_vertical = 0
+rect_pivot_offset = Vector2( 42, 38 )
+size_flags_vertical = 8
+texture = ExtResource( 2 )
+
+[node name="Yellow" type="TextureRect" parent="HBoxContainer"]
+modulate = Color( 0.729412, 0.698039, 0.337255, 1 )
+margin_left = 136.0
+margin_right = 220.0
+margin_bottom = 76.0
+grow_vertical = 0
+rect_pivot_offset = Vector2( 42, 38 )
+size_flags_vertical = 8
+texture = ExtResource( 2 )

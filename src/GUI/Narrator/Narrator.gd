@@ -3,18 +3,16 @@ extends Control
 var current_tutorial
 var first_move = true
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready():
 	# Conectarse a eventos propios y de los hijos
 	connect('gui_input', self, '_on_input_event')
 	
 	# Conectarse a eventos del universo
-	HudEvent.connect('tutorial_requested', self, '_show_tutorial')
 	DialogEvent.connect('dialog_finished', self, '_check_tutorial_after_dialog')
-	HudEvent.connect('ending_requested', self, '_show_ending')
 
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _on_input_event(event: InputEvent):
 	if event.is_pressed():
 		WorldEvent.emit_signal('tutorial_shown', current_tutorial)

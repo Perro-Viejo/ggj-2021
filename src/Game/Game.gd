@@ -1,5 +1,5 @@
 extends Node2D
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
+
 signal scene_is_loaded
 
 enum {IDLE, TRANSITION_IN, TRANSITION_OUT}
@@ -14,20 +14,16 @@ export var is_mouse_hidden = false
 var next_scene
 var transition_state:int = IDLE
 
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready()->void:
 	Data.set_data(Data.CURRENT_SCENE, 'MainMenu')
 	Data.set_data(Data.FORCE_FOCUS, is_mouse_hidden)
-	# mateo: 	Estaría chimba que esto se guarde en disco y se pueda cargar al
-	# 			iniciar el juego
-	Data.set_data(Data.EPISODE, current_episode)
-	Data.set_data(Data.CURRENT_TUTORIAL, 0)
 
 	GuiEvent.connect("Options",	self, "on_options")
 	GuiEvent.connect("Exit",		self, "on_exit")
 	GuiEvent.connect("ChangeScene",self, "on_change_scene")
 	GuiEvent.connect("Restart", 	self, "restart_scene")
-	#Background loader
 	SceneLoader.connect("scene_loaded", self, "on_scene_loaded")
 
 	GUIManager.gui_collect_focusgroup()

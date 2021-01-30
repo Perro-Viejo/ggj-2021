@@ -1,3 +1,4 @@
+class_name DefaultButton
 extends Button
 
 export(String, 'none', 'bounce', 'move') var focus_animation = 'bounce'
@@ -7,14 +8,17 @@ var _defaults := {
 	pos = self.rect_position
 }
 
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready() -> void:
 	self.rect_pivot_offset = Vector2(self.rect_size.x / 2, self.rect_size.y / 2)
 	if focus_animation != 'none':
 		self.connect('focus_entered', self, '_%s' % focus_animation)
 		self.connect('mouse_entered', self, '_%s' % focus_animation)
-		self.connect('button_down', self, 'play_sfx')
+		self.connect('button_down', self, '_play_sfx')
 
 
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _bounce() -> void:
 	SoundManager.play_se('ui_hover')
 	$Tween.interpolate_property(
@@ -33,5 +37,6 @@ func _move() -> void:
 	)
 	$Tween.start()
 
-func play_sfx():
+
+func _play_sfx():
 	SoundManager.play_se('ui_select')

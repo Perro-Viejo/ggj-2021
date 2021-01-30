@@ -14,7 +14,9 @@ onready var _exit: Button = find_node('Exit')
 onready var _credits: MarginContainer = find_node('Credits')
 onready var _credits_back: Button = _credits.find_node('Back')
 onready var _devs: Label = find_node('Devs')
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
+
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready()->void:
 	SectionEvent.MainMenu = true
 	GUIManager.gui_collect_focusgroup()
@@ -31,11 +33,9 @@ func _ready()->void:
 	_exit.connect('pressed', self, '_on_Exit_pressed')
 
 	# Conectarse a señales del universo pokémon
-	Settings.connect('ReTranslate', self, 'retranslate') # Localización
+	Settings.connect('ReTranslate', self, '_retranslate') # Localización
 
-	retranslate()
-
-#	_start()
+	_retranslate()
 
 
 func _process(delta):
@@ -49,9 +49,10 @@ func _exit_tree()->void:
 	GUIManager.gui_collect_focusgroup()	#Force re-collect buttons because main meno wont be there
 
 
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _on_NewGame_pressed()->void:
 	$AnimationPlayer.play('go_to_world')
-	SoundManager.play_se('ui_transition')
+#	SoundManager.play_se('ui_transition')
 	yield($AnimationPlayer, 'animation_finished')
 	GuiEvent.emit_signal('NewGame')
 	GuiEvent.emit_signal('ChangeScene', first_level)
@@ -91,8 +92,7 @@ func _start() -> void:
 	$AnimationPlayer.play('show_first_time')
 
 
-#localization
-func retranslate()->void:
+func _retranslate()->void:
 	_new_game.text = tr('NEW_GAME')
 	_options.text = tr('OPTIONS')
 	_credits_btn.text = tr('CREDITS')

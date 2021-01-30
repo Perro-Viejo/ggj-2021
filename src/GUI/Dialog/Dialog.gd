@@ -3,7 +3,7 @@ extends Control
 
 export var use_click_to_progress := false
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables privadas ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ variables privadas ░░░░
 var _forced_update := false
 var _current_character: Node2D = null
 # Cosas del Godot Dialog System ---- {
@@ -25,7 +25,7 @@ var _current_emotion := ''
 var _option_selected := false
 var _current_dialog_name := ''
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables onready ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ variables onready ░░░░
 onready var _story_reader: EXP_StoryReader = _story_reader_class.new()
 onready var _dialog_mnu_cnt: NinePatchRect = find_node('DialogMenuContainer')
 onready var _dialog_mnu: DialogMenu = find_node('DialogMenu')
@@ -35,7 +35,7 @@ onready var _subs: Label = $Subtitles
 onready var _dialog_btn: TextureButton = $DialogButton
 
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready() -> void:
 	# Configurar el Data manager para que vaya guardando información de los
 	# diálogos (eventualmente esto se guardará en un archivo así como se guardan
@@ -69,7 +69,7 @@ func _ready() -> void:
 	# No capturar clics mientras no esté reproduciendo una conversación
 	self.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _autofill_completed() -> void:
 	if _current_character:
 		yield(_character_frame.line_finished(), 'completed')

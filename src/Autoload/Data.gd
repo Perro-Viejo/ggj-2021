@@ -1,19 +1,17 @@
 extends Node
+
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
 const DEV_MODE := 'DEV_MODE'
 const CURRENT_SCENE := 'CURRENT_SCENE'
 const DIALOGS := 'DIALOGS'
 const FORCE_FOCUS := 'FORCE_FOCUS'
-const EPISODE := 'EPISODE'
-const CURRENT_TUTORIAL := 'CURRENT_TUTORIAL'
-
-var endings := {
-	1: 0,
-	2: 0,
-	3: 0
-}
+const LIGHT_RED := Color('#BA5671')
+const LIGHT_BLUE := Color('#56BAB9')
+const LIGHT_YELLOW := Color('#BAB256')
 
 var _data := {}
+
+
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func get_data(key: String):
 	return _data[key] if _data.has(key) else null
