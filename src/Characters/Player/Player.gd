@@ -12,8 +12,8 @@ var dir := Vector2.ZERO
 
 var _current_light_idx := 1
 
-onready var _light := $Light
-onready var _light_mask := $Light/Mask
+#onready var _light := $Light
+onready var _light_mask: Light2D = find_node('LightMask')
 onready var _crosshair: Sprite = find_node('Crosshair')
 onready var _camera: Camera2D = find_node('Camera2D')
 
@@ -37,7 +37,7 @@ func _input(event: InputEvent) -> void:
 			return
 		set_light_mask(wrapi(_current_light_idx + amount, 1, 3))
 	elif event is InputEventMouseMotion:
-		_light.look_at(get_global_mouse_position())
+#		_light.look_at(get_global_mouse_position())
 		_crosshair.position = get_local_mouse_position()
 
 
@@ -48,11 +48,11 @@ func set_light_mask(id := 1) -> void:
 
 	match id:
 		1:
-			_light.self_modulate = Color.red
+			_crosshair.self_modulate = Color('ff8c92')
 		2:
-			_light.self_modulate = Color.pink
+			_crosshair.self_modulate = Color('90ebe9')
 
-	_light.self_modulate.a = 0.5
+	_crosshair.self_modulate.a = 0.25
 	_current_light_idx = id
 
 
