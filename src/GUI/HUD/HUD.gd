@@ -15,7 +15,7 @@ onready var _main_menu_btn: Button = find_node('MainMenuBtn')
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready() -> void:
 	$Control.hide()
-#	_win_panel.modulate.a = 0.0
+	_win_panel.modulate.a = 0.0
 	_lose_panel.modulate.a = 0.0
 	
 	
