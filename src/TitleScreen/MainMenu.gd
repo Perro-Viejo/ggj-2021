@@ -37,7 +37,7 @@ func _ready()->void:
 	# Conectarse a señales del universo pokémon
 	Settings.connect('ReTranslate', self, '_retranslate') # Localización
 
-	_retranslate()
+#	_retranslate()
 
 
 func _process(delta):

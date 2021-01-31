@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/TitleScreen/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/chuchel.otf" type="DynamicFontData" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/images/gui/main_menu.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/gui/controls.png" type="Texture" id=5]
 [ext_resource path="res://assets/resources/dynamic_fonts/opendyslexic_regular_16.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/images/gui/team.jpg" type="Texture" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.278431, 0.278431, 0.278431, 1 )
@@ -24,14 +25,14 @@ content_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxEmpty" id=4]
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.12549, 0.12549, 0.12549, 1 )
 corner_radius_top_left = 25
 corner_radius_top_right = 25
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
 
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="StyleBoxFlat" id=6]
 content_margin_left = 16.0
 content_margin_right = 16.0
 bg_color = Color( 0.270588, 0.270588, 0.270588, 1 )
@@ -40,7 +41,7 @@ corner_radius_top_right = 25
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=7]
 content_margin_left = 16.0
 content_margin_right = 16.0
 bg_color = Color( 0.270588, 0.270588, 0.270588, 1 )
@@ -49,7 +50,7 @@ corner_radius_top_right = 25
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=8]
 length = 0.001
 step = 0.05
 tracks/0/type = "value"
@@ -101,7 +102,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=9]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("BG/Credits:visible")
@@ -166,7 +167,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=10]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("BG/GameName:modulate")
@@ -205,7 +206,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 resource_name = "show_controls"
 length = 0.8
 tracks/0/type = "value"
@@ -221,7 +222,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=12]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("BG/Credits:visible")
@@ -405,23 +406,36 @@ __meta__ = {
 [node name="Background" type="ColorRect" parent="BG/Credits"]
 margin_right = 1280.0
 margin_bottom = 548.0
-color = Color( 0.270588, 0.270588, 0.270588, 1 )
+color = Color( 0.101961, 0.101961, 0.101961, 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="BG/Credits"]
 margin_right = 1280.0
 margin_bottom = 548.0
 custom_constants/margin_right = 32
 
-[node name="CreditsContainer" type="VBoxContainer" parent="BG/Credits/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BG/Credits/MarginContainer"]
+margin_right = 1248.0
+margin_bottom = 548.0
+
+[node name="Team" type="TextureRect" parent="BG/Credits/MarginContainer/HBoxContainer"]
+margin_right = 737.0
+margin_bottom = 548.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="CreditsContainer" type="VBoxContainer" parent="BG/Credits/MarginContainer/HBoxContainer"]
+margin_left = 741.0
 margin_right = 1248.0
 margin_bottom = 548.0
 custom_constants/separation = 24
 alignment = 1
 
-[node name="Devs" type="Label" parent="BG/Credits/MarginContainer/CreditsContainer"]
-margin_left = 741.0
+[node name="Devs" type="Label" parent="BG/Credits/MarginContainer/HBoxContainer/CreditsContainer"]
 margin_top = 16.0
-margin_right = 1248.0
+margin_right = 507.0
 margin_bottom = 451.0
 size_flags_horizontal = 8
 custom_styles/normal = SubResource( 3 )
@@ -446,10 +460,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Back" parent="BG/Credits/MarginContainer/CreditsContainer" instance=ExtResource( 3 )]
-margin_left = 1135.0
+[node name="Back" parent="BG/Credits/MarginContainer/HBoxContainer/CreditsContainer" instance=ExtResource( 3 )]
+margin_left = 394.0
 margin_top = 475.0
-margin_right = 1248.0
+margin_right = 507.0
 margin_bottom = 531.0
 size_flags_horizontal = 8
 text = "back"
@@ -483,9 +497,9 @@ margin_top = 428.0
 margin_right = 719.0
 margin_bottom = 484.0
 size_flags_vertical = 8
-custom_styles/hover = SubResource( 9 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/normal = SubResource( 11 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -493,11 +507,11 @@ text = "thanks!"
 focus_animation = "none"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/SETUP = SubResource( 5 )
-anims/credits_exit = SubResource( 6 )
-anims/go_to_world = SubResource( 7 )
-anims/show_controls = SubResource( 12 )
-anims/show_credits = SubResource( 8 )
+anims/SETUP = SubResource( 8 )
+anims/credits_exit = SubResource( 9 )
+anims/go_to_world = SubResource( 10 )
+anims/show_controls = SubResource( 11 )
+anims/show_credits = SubResource( 12 )
 
 [node name="Tween" type="Tween" parent="."]
 
