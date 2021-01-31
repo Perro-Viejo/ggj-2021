@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/TitleScreen/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/chuchel.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://src/GUI/Buttons/DefaultButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/images/gui/main_menu.png" type="Texture" id=4]
 [ext_resource path="res://assets/resources/dynamic_fonts/opendyslexic_regular_16.tres" type="DynamicFont" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -237,7 +238,6 @@ __meta__ = {
 [node name="GameName" type="VBoxContainer" parent="BG"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = -298.0
 custom_constants/separation = -2
 alignment = 1
 __meta__ = {
@@ -245,6 +245,7 @@ __meta__ = {
 }
 
 [node name="GameName" type="Label" parent="BG/GameName"]
+visible = false
 margin_top = 51.0
 margin_right = 1280.0
 margin_bottom = 199.0
@@ -252,6 +253,11 @@ custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.937255, 0.929412, 0.537255, 1 )
 text = "GGJ 2021"
 align = 1
+
+[node name="TextureRect" type="TextureRect" parent="BG/GameName"]
+margin_right = 1280.0
+margin_bottom = 548.0
+texture = ExtResource( 4 )
 
 [node name="MainOptions" type="MarginContainer" parent="BG"]
 anchor_right = 1.0
@@ -266,7 +272,7 @@ __meta__ = {
 }
 
 [node name="VBoxMain" type="VBoxContainer" parent="BG/MainOptions"]
-margin_left = 1017.0
+margin_left = 1113.0
 margin_top = 128.0
 margin_right = 1264.0
 margin_bottom = 531.0
@@ -276,7 +282,7 @@ alignment = 1
 
 [node name="ButtonsContainer" type="VBoxContainer" parent="BG/MainOptions/VBoxMain"]
 margin_top = 109.0
-margin_right = 247.0
+margin_right = 151.0
 margin_bottom = 293.0
 size_flags_vertical = 8
 custom_constants/separation = 8
@@ -285,11 +291,12 @@ custom_constants/separation = 8
 "FocusGroup",
 "MainMenu",
 ] instance=ExtResource( 3 )]
-margin_right = 247.0
+margin_left = 17.0
+margin_right = 134.0
 margin_bottom = 56.0
 focus_neighbour_top = NodePath("../Exit")
 focus_previous = NodePath("../Exit")
-text = "nuevo juego"
+text = "start"
 focus_animation = "none"
 
 [node name="Options" parent="BG/MainOptions/VBoxMain/ButtonsContainer" instance=ExtResource( 3 )]
@@ -302,21 +309,20 @@ text = "Opciones"
 focus_animation = "none"
 
 [node name="CreditsBtn" parent="BG/MainOptions/VBoxMain/ButtonsContainer" instance=ExtResource( 3 )]
-margin_left = 37.0
 margin_top = 64.0
-margin_right = 209.0
+margin_right = 151.0
 margin_bottom = 120.0
-text = "créditos"
+text = "credits"
 focus_animation = "none"
 
 [node name="Exit" parent="BG/MainOptions/VBoxMain/ButtonsContainer" instance=ExtResource( 3 )]
-margin_left = 71.0
+margin_left = 24.0
 margin_top = 128.0
-margin_right = 176.0
+margin_right = 126.0
 margin_bottom = 184.0
 focus_neighbour_bottom = NodePath("../NewGame")
 focus_next = NodePath("../NewGame")
-text = "salir"
+text = "exit"
 focus_animation = "none"
 
 [node name="Credits" type="MarginContainer" parent="BG"]
