@@ -75,13 +75,13 @@ func set_character(node: Actor, emotion: String) -> void:
 		appear_time, Tween.TRANS_QUINT, Tween.EASE_OUT
 	)
 	$Tween.start()
-	SoundManager.play_se('ui_bubble_op')
+#	SoundManager.play_se('ui_bubble_op')
 	yield($Tween, 'tween_completed')
 
 
 func show_continue() -> void:
 	_continue.show()
-	SoundManager.play_se('ui_button_pop')
+#	SoundManager.play_se('ui_button_pop')
 	$Tween.interpolate_property(
 		_continue, 'rect_scale',
 		Vector2.ZERO, Vector2.ONE,

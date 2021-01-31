@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mx_in_game_cancer.ogg-1a7f5761af4b8e3b9a572188090b1fab.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/current/mx_in_game_cancer.ogg"
+dest_files=[ "res://.import/mx_in_game_cancer.ogg-1a7f5761af4b8e3b9a572188090b1fab.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

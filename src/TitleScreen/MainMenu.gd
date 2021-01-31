@@ -43,8 +43,8 @@ func _process(delta):
 
 
 func _exit_tree()->void:
-	AudioEvent.emit_signal("stop_requested", "MX", "Menu")
-	AudioEvent.emit_signal("play_requested", "MX", "inGame")
+#	AudioEvent.emit_signal("stop_requested", "MX", "Menu")
+#	AudioEvent.emit_signal("play_requested", "MX", "inGame")
 	SectionEvent.MainMenu = false				#switch bool for easier pause menu detection and more
 	GUIManager.gui_collect_focusgroup()	#Force re-collect buttons because main meno wont be there
 
@@ -52,7 +52,8 @@ func _exit_tree()->void:
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _on_NewGame_pressed()->void:
 	$AnimationPlayer.play('go_to_world')
-#	SoundManager.play_se('ui_transition')
+	AudioEvent.emit_signal('play_requested', 'MX', 'InGame')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Menu_Button')
 	yield($AnimationPlayer, 'animation_finished')
 	GuiEvent.emit_signal('NewGame')
 	GuiEvent.emit_signal('ChangeScene', first_level)
@@ -63,6 +64,7 @@ func _on_Options_pressed()->void:
 
 
 func _on_Credits_pressed() -> void:
+	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
 	_is_credits = !_is_credits
 	if _is_credits:
 		$AnimationPlayer.play('show_credits')
@@ -84,7 +86,8 @@ func _on_Exit_pressed()->void:
 
 
 func _play_sfx(key):
-	SoundManager.play_se(key)
+	pass
+#	SoundManager.play_se(key)
 
 
 func _start() -> void:

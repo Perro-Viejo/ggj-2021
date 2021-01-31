@@ -171,7 +171,8 @@ func _read_dialog_line() -> void:
 		actor = (line_dic.actor as String).replace(' ', '_')
 	
 	if line_dic.has('mx_trigger'):
-		SoundManager.play_me(line_dic.mx_trigger)
+#		SoundManager.play_me(line_dic.mx_trigger)
+		pass
 	
 	var action: String = line_dic.get('action', 'SPEAK')
 	
@@ -439,7 +440,7 @@ func _show_dialog_menu() -> void:
 	_dialog_btn.disabled = true
 
 	_dialog_mnu.show()
-	SoundManager.play_se('ui_player_open')
+#	SoundManager.play_se('ui_player_open')
 	$AnimationPlayer.play('show_dialog_menu')
 	yield($AnimationPlayer, 'animation_finished')
 
@@ -447,7 +448,7 @@ func _show_dialog_menu() -> void:
 
 
 func _hide_dialog_menu(closed: bool = true) -> void:
-	SoundManager.play_se('ui_player_close')
+#	SoundManager.play_se('ui_player_close')
 	$AnimationPlayer.play('show_dialog_menu', -1.0, -1.5, true)
 
 	if closed:

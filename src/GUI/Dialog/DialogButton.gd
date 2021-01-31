@@ -21,7 +21,7 @@ func toggle(show := true) -> void:
 		Tween.EASE_OUT if show else Tween.EASE_IN
 	)
 	$Tween.start()
-	SoundManager.play_se('ui_player_show')
+#	SoundManager.play_se('ui_player_show')
 	disabled = !show
 
 
@@ -31,4 +31,6 @@ func is_in_view() -> bool:
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _on_hover():
-	SoundManager.play_se('ui_player_hover')
+	pass
+#	SoundManager.play_se('ui_player_hover')
+

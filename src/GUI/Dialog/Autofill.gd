@@ -144,7 +144,7 @@ func update_defaults(character_name := '') -> void:
 
 
 func _write_character():
-	SoundManager.play_se('ui_write')
+#	SoundManager.play_se('ui_write')
 	if text.length() < _text.length():
 		text += _text[_count]
 		_count += 1

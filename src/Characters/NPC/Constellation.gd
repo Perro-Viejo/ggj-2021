@@ -123,6 +123,8 @@ func _calm_down() -> void:
 
 
 func _capture(_obj: Object, _key: NodePath) -> void:
+	AudioEvent.emit_signal('stop_requested', 'Laser', 'Ray_Loop')
+	AudioEvent.emit_signal('play_requested', 'Laser', 'Ray_Tail', global_position)
 	PlayerEvent.emit_signal('capture_done', self)
 	
 	_area2d.disconnect('input_event', self, '_check_input')

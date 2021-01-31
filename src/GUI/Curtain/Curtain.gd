@@ -27,7 +27,7 @@ func _hide_curtain() -> void:
 	yield(get_tree().create_timer(3.0), 'timeout')
 	_episode_intro.hide()
 	DialogEvent.emit_signal('subs_done')
-	SoundManager.play_se('ui_transition_circle_out')
+#	SoundManager.play_se('ui_transition_circle_out')
 	$AnimationPlayer.play('show_scene')
 	yield($AnimationPlayer, 'animation_finished')
 	_overlay.hide()
@@ -36,7 +36,7 @@ func _hide_curtain() -> void:
 
 func _show_curtain() -> void:
 	_overlay.show()
-	SoundManager.play_se('ui_transition_circle_in')
+#	SoundManager.play_se('ui_transition_circle_in')
 	$AnimationPlayer.play_backwards('show_scene')
 	yield($AnimationPlayer, 'animation_finished')
 	_episode_intro.clear()
@@ -46,7 +46,7 @@ func _show_curtain() -> void:
 func _show_for_dialog(tr_code: String) -> void:
 	_overlay.show()
 	$AnimationPlayer.play_backwards('show_scene')
-	SoundManager.play_se('ui_transition_circle_in')
+#	SoundManager.play_se('ui_transition_circle_in')
 	if Data.get_data(Data.EPISODE) == 2:
 		SoundManager.play_me('mx_cue_03')
 	yield($AnimationPlayer, 'animation_finished')
@@ -59,7 +59,7 @@ func _show_for_dialog(tr_code: String) -> void:
 	DialogEvent.emit_signal('subs_done')
 	DialogEvent.emit_signal('dialog_continued')
 	$AnimationPlayer.play('show_scene')
-	SoundManager.play_se('ui_transition_circle_out')
+#	SoundManager.play_se('ui_transition_circle_out')
 	yield($AnimationPlayer, 'animation_finished')
 	_overlay.hide()
 

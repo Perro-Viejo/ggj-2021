@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mx_in_game_piscis.ogg-4a1f5384ddc4fcd3250bc2bf306c7fb8.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/current/mx_in_game_piscis.ogg"
+dest_files=[ "res://.import/mx_in_game_piscis.ogg-4a1f5384ddc4fcd3250bc2bf306c7fb8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

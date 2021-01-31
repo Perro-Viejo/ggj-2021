@@ -48,7 +48,8 @@ func _post_dialog_action(dialog_name: String) -> void:
 
 # Temporary function for testing the changes to the SoundManager ---------------
 func _on_Button_pressed():
-	SoundManager.play_se('spec_horse')
+	pass
+#	SoundManager.play_se('spec_horse')
 # ------------------------------------------------------------------------------
 
 

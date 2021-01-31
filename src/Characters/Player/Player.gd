@@ -91,9 +91,13 @@ func play_animation(name: String) -> void:
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _shoot_laser(target: Node2D, shoot: bool) -> void:
 	if shoot:
+		AudioEvent.emit_signal('play_requested', 'Laser', 'Ray_Head', global_position)
+		AudioEvent.emit_signal('play_requested', 'Laser', 'Ray_Loop', global_position)
 		_capture_target = target
 		_laser.look_at(_capture_target.global_position)
 	else:
+		AudioEvent.emit_signal('stop_requested', 'Laser', 'Ray_Loop')
+		AudioEvent.emit_signal('play_requested', 'Laser', 'Ray_Tail', global_position)
 		_capture_target = null
 	_laser.is_casting = shoot
 

@@ -156,4 +156,4 @@ func _should_speak(character_name, text, time, emotion) -> void:
 		if character_name == 'player' and emotion == '':
 			var emotions = ['excited','happy','normal','surprised']
 			emotion = emotions[randi() % emotions.size()]
-		SoundManager.play_se('dx_' + character_name + '_' + emotion)
+#		SoundManager.play_se('dx_' + character_name + '_' + emotion)

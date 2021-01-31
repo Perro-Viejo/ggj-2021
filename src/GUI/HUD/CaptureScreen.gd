@@ -29,6 +29,7 @@ func _check_input_type(event: InputEvent) -> void:
 
 
 func _show_captured_sign(constellation: Constellation) -> void:
+	AudioEvent.emit_signal('play_requested', 'UI', 'Card_Show')
 	_card_texture.texture = constellation.card
 	_light_texture.self_modulate = (constellation.hiding_light as Item).light_color
 	
@@ -53,6 +54,7 @@ func _show_captured_sign(constellation: Constellation) -> void:
 
 
 func _close() -> void:
+	AudioEvent.emit_signal('play_requested', 'UI', 'Card_Hide')
 	if not _listening_input: return
 
 	_listening_input = false

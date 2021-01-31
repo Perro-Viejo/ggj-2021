@@ -20,7 +20,7 @@ func _ready() -> void:
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _bounce() -> void:
-	SoundManager.play_se('ui_hover')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Hover')
 	$Tween.interpolate_property(
 		self, 'rect_scale',
 		Vector2.DOWN, Vector2.ONE,
@@ -29,7 +29,7 @@ func _bounce() -> void:
 	$Tween.start()
 
 func _move() -> void:
-	SoundManager.play_se('ui_move')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Hover')
 	$Tween.interpolate_property(
 		self, 'rect_position:x',
 		_defaults.pos.x + 32.0, _defaults.pos.x,
@@ -39,4 +39,5 @@ func _move() -> void:
 
 
 func _play_sfx():
-	SoundManager.play_se('ui_select')
+	print('tumami')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
