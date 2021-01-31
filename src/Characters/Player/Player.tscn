@@ -1,14 +1,12 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/Inventory/Inventory.gd" type="Script" id=1]
 [ext_resource path="res://src/Characters/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://src/StateMachine/StateMachine.gd" type="Script" id=3]
 [ext_resource path="res://src/Characters/Player/States/Idle.gd" type="Script" id=4]
-[ext_resource path="res://assets/images/characters/quemamais.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/characters/rahu.png" type="Texture" id=5]
 [ext_resource path="res://src/Characters/Player/States/Move.gd" type="Script" id=6]
-[ext_resource path="res://assets/images/characters/quemamais_expressions.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/characters/voice_quemamais.png" type="Texture" id=8]
-[ext_resource path="res://src/Characters/Player/States/Walk.gd" type="Script" id=9]
+[ext_resource path="res://src/Characters/Player/States/Run.gd" type="Script" id=9]
 [ext_resource path="res://assets/images/vfx/tmp_light.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/vfx/tmp_mask.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/gui/tmp_crosshair.png" type="Texture" id=12]
@@ -16,32 +14,8 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 custom_solver_bias = 1.0
-radius = 6.0
-height = 8.16039
-
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 7, 8 )
-
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ SubResource( 2 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 10.0
-} ]
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 5 )
-region = Rect2( 7, 0, 7, 8 )
-
-[sub_resource type="SpriteFrames" id=5]
-animations = [ {
-"frames": [ SubResource( 4 ) ],
-"loop": true,
-"name": "Move",
-"speed": 5.0
-} ]
+radius = 8.0
+height = 16.0
 
 [node name="Player" type="KinematicBody2D"]
 z_index = 5
@@ -51,7 +25,6 @@ script = ExtResource( 2 )
 dialog_color = Color( 0.54902, 0.247059, 0.364706, 1 )
 speed = 600
 dialog_name = "Quemamais"
-expressions = ExtResource( 7 )
 expressions_map = {
 "angry": -1,
 "excited": 1,
@@ -64,12 +37,11 @@ expressions_map = {
 }
 expressions_offset = Vector2( 76, 80 )
 is_current_player = true
-voice = ExtResource( 8 )
 mask = NodePath("Crosshair/LightMask")
 light = NodePath("Crosshair")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -2 )
+position = Vector2( 0, 34 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
@@ -80,34 +52,19 @@ initial_state = "MOVE"
 [node name="Idle" type="Node2D" parent="StateMachine"]
 script = ExtResource( 4 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="StateMachine/Idle"]
-scale = Vector2( 4, 4 )
-frames = SubResource( 3 )
-animation = "Idle"
-
 [node name="Move" type="Node2D" parent="StateMachine"]
-visible = false
 script = ExtResource( 6 )
 speed = 4.0
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="StateMachine/Move"]
-scale = Vector2( 4, 4 )
-frames = SubResource( 5 )
-animation = "Move"
-flip_v = true
-
-[node name="Walk" type="Node2D" parent="StateMachine"]
-visible = false
+[node name="Run" type="Node2D" parent="StateMachine"]
 script = ExtResource( 9 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="StateMachine/Walk"]
-scale = Vector2( 4, 4 )
-frames = SubResource( 5 )
-animation = "Move"
-flip_v = true
 
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 5 )
 
 [node name="Crosshair" type="Sprite" parent="."]
 texture = ExtResource( 12 )

@@ -31,7 +31,6 @@ export var expressions_scale := Vector2.ONE
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░variables públicas ░░░░
 var path := PoolVector2Array() setget _set_path
 var velocity := Vector2.ZERO
-var current_room: Room = null
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ variables privadas ░░░░
 var _in_dialog := false setget set_in_dialog, is_in_dialog
@@ -78,13 +77,8 @@ func _physics_process(delta):
 
 		direction = next_position - position;
 		direction.normalized()
-		
-		if current_room:
-			if position.y > current_room.position.y:
-				self.z_index = 4
-			else:
-				self.z_index = 0
-		
+
+
 		move_and_slide(direction * _speed * delta)
 	elif _is_moving:
 		self._is_moving = false
@@ -164,50 +158,3 @@ func _should_speak(character_name, text, time, emotion) -> void:
 			var emotions = ['excited','happy','normal','surprised']
 			emotion = emotions[randi() % emotions.size()]
 		SoundManager.play_se('dx_' + character_name + '_' + emotion)
-
-
-# Hace que el actor se mueva a una coordenada dentro de la escena:
-# 	props: { 
-# 		actor: String,
-# 		target_position: Vector2,
-# 		final_direction: Vector2,
-# 		speed: float,
-# 		is_relative: bool,
-# 	}
-func _move_to_coordinate(props: Dictionary):
-	if props.has('speed'):
-		_temporary_speed = props.speed
-	if _its_me(props.actor):
-		_in_dialog = true
-		var target: Vector2 = props.target_position
-		
-		if props.has('is_relative'):
-			target += self.position
-		
-		emit_signal('moved_to_coordinate', {
-			actor = self,
-			target = target,
-			post_wait = props.post_wait
-		})
-
-
-# Hace que el actor se mueva a un punto (Position2D) dentro de una habitación
-# del mundo (Node2D).
-# 	props: { 
-# 		actor: String,
-# 		room: String,
-# 		reference: String,
-# 		final_direction: Vector2,
-# 		speed: float
-# 	}
-func _move_to_reference(props: Dictionary):
-	if props.has('speed'):
-		_temporary_speed = props.speed
-	if _its_me(props.actor):
-		_in_dialog = true
-		emit_signal('moved_to_reference', {
-			actor = self,
-			room = props.room,
-			point_name = props.reference,
-			post_wait = props.post_wait
-		})

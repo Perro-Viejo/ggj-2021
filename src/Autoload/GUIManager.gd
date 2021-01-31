@@ -6,9 +6,9 @@ var FocusGroup:Array
 var ButtonsSections:Dictionary = {}
 
 onready var focus_detect:Control = Control.new() # Use to detect if no button in focus
-onready var _arrow: Resource = load('res://assets/images/gui/cursor_arrow.png')
-onready var _hand: Resource = load('res://assets/images/gui/cursor_hand.png')
-onready var _move: Resource = load('res://assets/images/gui/cursor_move.png')
+#onready var _arrow: Resource = load('res://assets/images/gui/cursor_arrow.png')
+#onready var _hand: Resource = load('res://assets/images/gui/cursor_hand.png')
+#onready var _move: Resource = load('res://assets/images/gui/cursor_move.png')
 
 func _ready()->void:
 	add_child(focus_detect) #Without this it can't detect buttons in focus

@@ -3,6 +3,7 @@ extends PanelContainer
 var _listening_input := false
 
 onready var _close_btn: DefaultButton = find_node('Close')
+onready var _card_texture: TextureRect = find_node('Card')
 
 
 func _ready() -> void:
@@ -17,20 +18,36 @@ func _ready() -> void:
 
 
 func _check_input_type(event: InputEvent) -> void:
-	if not _listening_input: return
 	if event is InputEventMouseButton \
 		and event.button_index == BUTTON_LEFT \
 		and event.pressed:
 			_close()
 
 
-func _show_captured_sign(target: Node2D) -> void:
+func _show_captured_sign(constellation: Node2D) -> void:
+	_card_texture.texture = (constellation as Constellation).card
 	show()
-	# TODO: Disparar alguna animación que muestre la carta así bien lindo
-	yield(get_tree().create_timer(2.0), 'timeout')
+	$Tween.interpolate_property(
+		$CenterContainer, 'rect_position:y',
+		$CenterContainer.rect_position.y + 500.0, $CenterContainer.rect_position.y,
+		0.8, Tween.TRANS_BACK, Tween.EASE_OUT
+	)
+	$Tween.start()
+	yield($Tween, 'tween_completed')
 	_listening_input = true
 
 
 func _close() -> void:
+	if not _listening_input: return
+
+	_listening_input = false
+	$Tween.interpolate_property(
+		$CenterContainer, 'rect_position:y',
+		$CenterContainer.rect_position.y, $CenterContainer.rect_position.y + 500.0,
+		0.4, Tween.TRANS_BACK, Tween.EASE_IN
+	)
+	$Tween.start()
+	yield($Tween, 'tween_completed')
+
 	HudEvent.emit_signal('capture_screen_closed')
 	hide()

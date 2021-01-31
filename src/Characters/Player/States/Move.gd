@@ -23,10 +23,6 @@ func _ready() -> void:
 	yield(owner, 'ready')
 	_parent = get_parent().get_parent()
 	visible = false
-	play_animation()
-
-	if listen_anim_frames:
-		sprite.connect('frame_changed', self, '_on_frame_changed')
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
@@ -61,41 +57,7 @@ func _physics_process(delta) -> void:
 		owner.move_and_collide(dir * _calc_speed * 2 * delta)
 
 	if dir != Vector2(0,0) and not owner.is_moving:
-		_state_machine.transition_to_state(_state_machine.STATES.WALK)
+		_state_machine.transition_to_state(_state_machine.states.RUN)
 		owner.update_camera_limits()
 	elif dir == Vector2(0,0) and owner.is_moving:
-		_state_machine.transition_to_state(_state_machine.STATES.IDLE)
-
-
-func enter(msg: Dictionary = {}) -> void:
-	visible = true
-	play_animation()
-	pass
-
-
-func world_tick() -> void:
-	pass
-
-
-func exit() -> void:
-	visible = false
-	stop()
-
-
-func play_animation() -> bool:
-	return false
-
-
-func stop() -> void:
-	if has_node("AnimatedSprite"):
-		sprite.stop()
-
-
-func _get_state_machine(node: Node) -> Node:
-	if node != null and not node.is_in_group('state_machine'):
-		return _get_state_machine(node.get_parent())
-	return node
-
-
-func _on_frame_changed():
-	pass
+		_state_machine.transition_to_state(_state_machine.states.IDLE)

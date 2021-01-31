@@ -1,33 +1,26 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Levels/World.gd" type="Script" id=2]
-[ext_resource path="res://assets/images/world/tmp_dog_track.png" type="Texture" id=3]
+[ext_resource path="res://src/Characters/NPC/Constellation.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/world/tmp_chicken_track.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/world/map.PNG" type="Texture" id=5]
-[ext_resource path="res://assets/images/world/tmp_unknown_track.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/world/tmp_frog_track.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/characters/constellation_cancer.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gui/cards/card_01.png" type="Texture" id=7]
 [ext_resource path="res://src/Levels/Tracks.gd" type="Script" id=8]
-[ext_resource path="res://src/Levels/PawPrint.gd" type="Script" id=9]
-[ext_resource path="res://assets/images/gui/tmp_capture_under.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/gui/tmp_capture_progress.png" type="Texture" id=11]
-
-[sub_resource type="CanvasItemMaterial" id=1]
-light_mode = 2
-
-[sub_resource type="CanvasItemMaterial" id=2]
-light_mode = 2
+[ext_resource path="res://assets/images/gui/cards/card_02.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/world/tmp_dog_track.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/characters/constellation_sagitario.png" type="Texture" id=11]
 
 [sub_resource type="Curve2D" id=3]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -264, 72, -404.456, 24.0271, 404.456, -24.0271, 24, -464, -208.112, 441.873, 208.112, -441.873, 760, -672 )
 }
 
-[sub_resource type="CanvasItemMaterial" id=4]
-light_mode = 2
-
-[sub_resource type="CircleShape2D" id=5]
-radius = 20.0998
+[sub_resource type="Curve2D" id=4]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 41.8631, 132.414, 0, 0, 0, 0, 474.124, -71.0029, 0, 0, 0, 0, 978.428, 162.079, 0, 0, 0, 0, 1620.46, 28.5866, 0, 0, 0, 0, 1484.85, -255.349 )
+}
 
 [node name="World" type="Node2D"]
 script = ExtResource( 2 )
@@ -48,7 +41,7 @@ __meta__ = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 808, -584 )
+position = Vector2( -135.507, 181.569 )
 expressions_map = {
 "angry": -1,
 "excited": 1,
@@ -65,61 +58,54 @@ script = ExtResource( 8 )
 
 [node name="Tween" type="Tween" parent="Tracks"]
 
-[node name="Chicken" type="Sprite" parent="Tracks"]
-material = SubResource( 1 )
-position = Vector2( -328, 0 )
-texture = ExtResource( 4 )
+[node name="Paths" type="Node2D" parent="Tracks"]
 
-[node name="Dog" type="Sprite" parent="Tracks"]
-light_mask = 2
-material = SubResource( 1 )
-position = Vector2( 232, 0 )
-texture = ExtResource( 3 )
-
-[node name="Unknown" type="Sprite" parent="Tracks"]
-light_mask = 4
-material = SubResource( 2 )
-texture = ExtResource( 6 )
-
-[node name="Path2D" type="Path2D" parent="Tracks"]
+[node name="Path2D" type="Path2D" parent="Tracks/Paths"]
 curve = SubResource( 3 )
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Tracks/Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Tracks/Paths/Path2D"]
 position = Vector2( -264, 72 )
 rotation = -1.78036
 
-[node name="PawPrint" type="Sprite" parent="Tracks/Path2D/PathFollow2D"]
-light_mask = 4
-material = SubResource( 4 )
-texture = ExtResource( 7 )
-script = ExtResource( 9 )
-spawn_rate = 10.0
-lifetime = 60.0
-capture_time = 5.0
+[node name="Path2D2" type="Path2D" parent="Tracks/Paths"]
+curve = SubResource( 4 )
 
-[node name="Tween" type="Tween" parent="Tracks/Path2D/PathFollow2D/PawPrint"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Tracks/Paths/Path2D2"]
+position = Vector2( 41.8631, 132.414 )
+rotation = -0.439847
 
-[node name="Area2D" type="Area2D" parent="Tracks/Path2D/PathFollow2D/PawPrint"]
+[node name="Constellations" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tracks/Path2D/PathFollow2D/PawPrint/Area2D"]
-shape = SubResource( 5 )
+[node name="Constellation" parent="Constellations" instance=ExtResource( 3 )]
+light_mask = 1
+position = Vector2( -264, 72 )
+rotation = -1.78036
+texture = ExtResource( 4 )
+spawn_rate = 20.0
+card = ExtResource( 7 )
+creature = ExtResource( 6 )
+creature_scale = Vector2( 0.5, 0.5 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tracks/Path2D/PathFollow2D/PawPrint"]
-position = Vector2( 16.4829, 273.411 )
+[node name="Constellation2" parent="Constellations" instance=ExtResource( 3 )]
+light_mask = 2
+position = Vector2( 41.8631, 132.414 )
+rotation = -0.439847
+texture = ExtResource( 10 )
+spawn_rate = 20.0
+card = ExtResource( 9 )
+creature = ExtResource( 11 )
+creature_scale = Vector2( 0.7, 0.7 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tracks/Path2D/PathFollow2D/PawPrint/StaticBody2D"]
-position = Vector2( -16.4829, -273.411 )
-shape = SubResource( 5 )
+[node name="Limits" type="StaticBody2D" parent="."]
 
-[node name="CaptureProgress" type="TextureProgress" parent="Tracks/Path2D/PathFollow2D/PawPrint"]
-margin_left = -35.0
-margin_top = -35.0
-margin_right = 5.0
-margin_bottom = 5.0
-mouse_filter = 2
-texture_under = ExtResource( 10 )
-texture_progress = ExtResource( 11 )
-fill_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Limits"]
+polygon = PoolVector2Array( -1942.06, -986.926, -1945.06, -876.052, -1891.12, -801.136, -1882.13, -741.204, -1945.06, -657.299, -1939.06, -561.407, -1903.1, -510.465, -1909.1, -390.6, -1894.11, -240.769, -1945.06, -126.898, -1954.04, 13.9427, -1909.1, 205.726, -1867.14, 334.581, -1939.81, 486.963, -1929.32, 630.8, -1864.89, 804.604, -1875.38, 857.045, -1810.2, 927.568, -1731.16, 902.341, -1520.93, 1006.61, -1325.84, 1046.98, -1136.72, 1099.77, -801.125, 1097.43, -320.132, 1087.34, -44.3181, 1107.52, 169.27, 1068.84, 498.901, 1082.29, 717.534, 1110.88, 1012.68, 1113.82, 1166.39, 1073.5, 1443.57, 1081.06, 1645.16, 985.305, 1725.8, 975.226, 1811.47, 912.23, 1975.26, 879.472, 2015.58, 1141.54, -0.294434, 1270.05, -1728.91, 1141.54, -1998.53, 1045.78, -2076.65, -2.47266, -2048.93, -1058.29, -1822.19, -1262.61, 1905.59, -1256.62, 2127.35, -1114.15, 1841.3, -1071.78, 1500.15, -1056.94, 1074.24, -1105.68, 892.017, -1076.01, 762.763, -1097.2, 533.919, -1067.54, 374.999, -1107.8, 211.842, -1073.9, 63.517, -1099.32, -239.489, -1065.42, -322.128, -1078.13, -410.788, -1061.84, -512.673, -1085.81, -605.568, -1058.85, -746.409, -1085.81, -842.3, -1073.83, -929.202, -1097.8, -1043.07, -1055.85, -1462.6, -1055.85, -1534.52, -1079.82, -1630.41, -1040.87, -1771.25, -1136.76, -1846.17, -1067.83 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Limits"]
+polygon = PoolVector2Array( 1870.17, -1049.32, 1932.08, -984.235, 1943.19, -687.391, 1801.91, -500.078, 1801.91, -415.946, 1908.27, -268.317, 1940.02, -23.8573, 1917.79, 339.658, 1936.84, 460.3, 1914.62, 542.845, 1940.02, 658.725, 1914.62, 758.731, 1938.43, 868.262, 1993.99, 863.5, 2020.98, 1036.53, 2209.88, 966.681, 2160.67, -4.80859, 2168.6, -1114.4 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Limits"]
+polygon = PoolVector2Array( -1387.14, -864.89, -1412.08, -844.845, -1433.91, -824.354, -1457.52, -807.872, -1456.63, -774.464, -1473.11, -749.073, -1437.29, -722.191, -1414.13, -711.946, -1402.1, -699.918, -1381.16, -695.464, -1368.25, -677.201, -1333.95, -650.028, -1295.64, -635.774, -1272.92, -629.983, -1245.3, -638.001, -1223.48, -646.019, -1202.09, -647.801, -1167.35, -652.701, -1124.14, -651.81, -1104.99, -666.51, -1076.92, -667.846, -1052.87, -676.755, -1002.98, -715.509, -1019.01, -732.882, -1004.5, -754.418, -1019.2, -784.709, -1060.62, -798.518, -1095.81, -815.89, -1118.53, -816.781, -1145.26, -833.708, -1184.46, -832.817, -1206.28, -849.299, -1228.56, -849.299, -1232.57, -864.444, -1261.52, -870.235, -1265.97, -885.38, -1290.92, -890.726, -1344.82, -863.999, -1365.31, -867.562 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Limits"]
+polygon = PoolVector2Array( 1074.3, -9.75597, 1113.4, -39.6078, 1167.21, -47.5962, 1202.95, -78.2889, 1236.17, -103.936, 1273.59, -117.811, 1324.46, -110.243, 1361.04, -95.9477, 1401.4, -69.88, 1444.71, -53.062, 1461.95, -16.9035, 1449.76, 0.334885, 1420.82, 13.0462, 1396.88, 16.8259, 1381.76, 27.5352, 1335.77, 20.6057, 1304.9, 31.315, 1265.22, 31.945, 1233.72, 16.8259, 1188.99, 23.7555, 1176.39, 31.315, 1141.74, 29.4251, 1108.36, 33.2049, 1085.68, 17.4559 )

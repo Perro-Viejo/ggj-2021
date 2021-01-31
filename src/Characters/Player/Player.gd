@@ -4,7 +4,6 @@ extends 'res://src/Characters/Actor.gd'
 export var mask: NodePath
 export var light: NodePath
 
-var node_to_interact: Pickable = null setget _set_node_to_interact
 var grabbing: bool = false
 var on_ground: bool = false
 var foot = 'L'
@@ -33,6 +32,7 @@ func _ready():
 	HudEvent.connect('capture_screen_closed', self, '_unpause')
 
 	update_camera_limits()
+	set_light_mask()
 
 
 func _input(event: InputEvent) -> void:
@@ -63,14 +63,15 @@ func set_light_mask(id := 1) -> void:
 	match id:
 		1:
 			_crosshair.self_modulate = Data.LIGHT_RED
-			(_light_mask as Light2D).range_item_cull_mask = 1
+			_light_mask.range_item_cull_mask = 1
 		2:
 			_crosshair.self_modulate = Data.LIGHT_BLUE
-			(_light_mask as Light2D).range_item_cull_mask = 2
+			_light_mask.range_item_cull_mask = 2
 		3:
 			_crosshair.self_modulate = Data.LIGHT_YELLOW
-			(_light_mask as Light2D).range_item_cull_mask = 4
+			_light_mask.range_item_cull_mask = 4
 
+	Data.set_data(Data.CURRENT_LIGHT_MASK, _light_mask.range_item_cull_mask)
 	WorldEvent.emit_signal('light_changed', _current_light_idx - 1)
 
 
@@ -85,36 +86,6 @@ func update_camera_limits() -> void:
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
-func _set_node_to_interact(new_node: Pickable) -> void:
-	if node_to_interact:
-		node_to_interact.hide_interaction()
-	if new_node and new_node.is_in_group('Pickable'):
-		new_node.show_interaction()
-
-	node_to_interact = new_node
-
-
-func _set_fishing(value: bool) -> void:
-	$StateMachine.state.play_animation()
-
-
-func _on_object_check(clickable: Clickable):
-	if clickable.is_near_to(self.global_position):
-		clickable.interact()
-		var emotions = ['excited','happy','normal','surprised']
-		SoundManager.play_se('dx_player_' + emotions[randi() % emotions.size()])
-	else:
-		speak('ta lejambres')
-
-
-func _movement_changed(actor: Actor) -> void:
-	if .is_moving():
-		$StateMachine.transition_to_key('Move')
-	else:
-		$StateMachine.transition_to_key('Idle')
-		PlayerEvent.emit_signal('movement_finished')
-
-
 func _shoot_laser(target: Node2D, shoot: bool) -> void:
 	if shoot:
 		_capture_target = target

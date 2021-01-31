@@ -9,8 +9,6 @@ Use State as a child of a StateMachine node.
 var _parent = null
 
 onready var _state_machine = _get_state_machine(self)
-onready var has_animation: bool = has_node("AnimatedSprite")
-onready var sprite: AnimatedSprite = $AnimatedSprite if has_animation else null
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
@@ -18,7 +16,6 @@ func _ready() -> void:
 	yield(owner, 'ready')
 	_parent = get_parent().get_parent()
 	visible = false
-	play_animation()
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
@@ -33,8 +30,6 @@ func physics_process(delta: float) -> void:
 func enter(msg: Dictionary = {}) -> void:
 	# print('%s enters %s' % [ owner.name, name ])
 	visible = true
-	play_animation()
-	pass
 
 
 func world_tick() -> void:
@@ -43,16 +38,6 @@ func world_tick() -> void:
 
 func exit() -> void:
 	visible = false
-	stop()
-
-
-func play_animation() -> bool:
-	return false
-
-
-func stop() -> void:
-	if has_node("AnimatedSprite"):
-		sprite.stop()
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░

@@ -3,25 +3,25 @@ extends Node2D
 
 export var initial_state := 'IDLE'
 
+var states = {}
+
 onready var state: State = null
 onready var _current_state_name
 onready var _previous_state
 
-var STATES = {}
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _init() -> void:
 	add_to_group('state_machine')
 
 
-
 func _ready() -> void:
 	yield(owner, 'ready')
-	
-	for child in get_children():
-		self.STATES[child.name.to_upper()] = child as State
 
-	state = self.STATES["IDLE"]
+	for child in get_children():
+		self.states[child.name.to_upper()] = child as State
+
+	state = self.states["IDLE"]
 	state.enter()
 
 
@@ -51,14 +51,13 @@ func transition_to_key(target_state_path: String, msg: Dictionary = {}) -> void:
 
 
 func transition_to_state(target_state: State, msg: Dictionary = {}) -> void:
-	if target_state.has_animation:
-		state.exit()
-		state.visible = false
-		target_state.visible = true
-		self.state = target_state
-		_previous_state = state.name	
-		_current_state_name = target_state.name
-	
+	state.exit()
+	state.visible = false
+	target_state.visible = true
+	self.state = target_state
+	_previous_state = state.name	
+	_current_state_name = target_state.name
+
 	target_state.enter()
 
 
