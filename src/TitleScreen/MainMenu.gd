@@ -14,6 +14,7 @@ onready var _exit: Button = find_node('Exit')
 onready var _credits: MarginContainer = find_node('Credits')
 onready var _credits_back: Button = _credits.find_node('Back')
 onready var _devs: Label = find_node('Devs')
+onready var _close_controls: Button = find_node('CloseControls')
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
@@ -27,10 +28,11 @@ func _ready()->void:
 		_exit.visible = false
 
 	# Conectarse a señales de los hijos
-	_new_game.connect('pressed', self, '_on_NewGame_pressed')
+	_new_game.connect('pressed', self, '_show_controls')
 	_options.connect('pressed', self, '_on_Options_pressed')
 	_credits_btn.connect('pressed', self, '_on_Credits_pressed')
 	_exit.connect('pressed', self, '_on_Exit_pressed')
+	_close_controls.connect('pressed', self, '_go_to_world')
 
 	# Conectarse a señales del universo pokémon
 	Settings.connect('ReTranslate', self, '_retranslate') # Localización
@@ -50,7 +52,7 @@ func _exit_tree()->void:
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
-func _on_NewGame_pressed()->void:
+func _go_to_world()->void:
 	$AnimationPlayer.play('go_to_world')
 	AudioEvent.emit_signal('play_requested', 'MX', 'InGame')
 	AudioEvent.emit_signal('play_requested', 'UI', 'Menu_Button')
@@ -101,3 +103,7 @@ func _retranslate()->void:
 	_credits_btn.text = tr('CREDITS')
 	_exit.text = tr('EXIT')
 	_credits_back.text = tr('BACK')
+
+
+func _show_controls() -> void:
+	$AnimationPlayer.play('show_controls')

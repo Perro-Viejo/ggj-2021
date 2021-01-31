@@ -9,7 +9,7 @@
 light_mode = 2
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 20.0998
+radius = 43.0
 
 [sub_resource type="CanvasItemMaterial" id=3]
 light_mode = 2

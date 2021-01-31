@@ -58,7 +58,7 @@ func _show_win_panel() -> void:
 	$Tween.interpolate_property(
 		_win_panel, 'modulate:a',
 		0.0, 1.0,
-		10.0, Tween.TRANS_ELASTIC, Tween.EASE_OUT
+		1.0, Tween.TRANS_SINE, Tween.EASE_OUT
 	)
 	$Tween.start()
 

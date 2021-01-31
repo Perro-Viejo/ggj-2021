@@ -1,4 +1,4 @@
-[gd_scene load_steps=219 format=2]
+[gd_scene load_steps=259 format=2]
 
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Levels/World.gd" type="Script" id=2]
@@ -20,6 +20,21 @@
 [ext_resource path="res://assets/resources/sprite_frames/tree_01.tres" type="SpriteFrames" id=18]
 [ext_resource path="res://assets/resources/sprite_frames/tree_02.tres" type="SpriteFrames" id=19]
 [ext_resource path="res://src/Levels/PerroTimer.tscn" type="PackedScene" id=20]
+[ext_resource path="res://assets/images/world/clover.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/world/flower_01.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/world/flower_02.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/world/island_01.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/world/island_02.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/world/island_03.png" type="Texture" id=26]
+[ext_resource path="res://assets/images/world/fungus_04.png" type="Texture" id=27]
+[ext_resource path="res://assets/images/world/fungus_01.png" type="Texture" id=28]
+[ext_resource path="res://assets/images/world/fungus_03.png" type="Texture" id=29]
+[ext_resource path="res://assets/images/world/fungus_02.png" type="Texture" id=30]
+[ext_resource path="res://assets/images/world/tatan.png" type="Texture" id=31]
+[ext_resource path="res://assets/images/world/panda.png" type="Texture" id=32]
+[ext_resource path="res://assets/images/world/gecko.png" type="Texture" id=33]
+[ext_resource path="res://assets/images/world/beaver.png" type="Texture" id=34]
+[ext_resource path="res://assets/images/world/nalga.png" type="Texture" id=35]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -1020,6 +1035,155 @@ animations = [ {
 "speed": 60.0
 } ]
 
+[sub_resource type="AtlasTexture" id=199]
+flags = 4
+atlas = ExtResource( 23 )
+region = Rect2( 0, 0, 148, 230 )
+
+[sub_resource type="AtlasTexture" id=200]
+flags = 4
+atlas = ExtResource( 23 )
+region = Rect2( 148, 0, 148, 230 )
+
+[sub_resource type="SpriteFrames" id=201]
+animations = [ {
+"frames": [ SubResource( 199 ), SubResource( 200 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="AtlasTexture" id=202]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 0, 0, 171, 313 )
+
+[sub_resource type="AtlasTexture" id=203]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 171, 0, 171, 313 )
+
+[sub_resource type="SpriteFrames" id=204]
+animations = [ {
+"frames": [ SubResource( 202 ), SubResource( 203 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="AtlasTexture" id=205]
+flags = 4
+atlas = ExtResource( 25 )
+region = Rect2( 0, 0, 171, 199 )
+
+[sub_resource type="AtlasTexture" id=206]
+flags = 4
+atlas = ExtResource( 25 )
+region = Rect2( 171, 0, 171, 199 )
+
+[sub_resource type="SpriteFrames" id=207]
+animations = [ {
+"frames": [ SubResource( 205 ), SubResource( 206 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="AtlasTexture" id=208]
+flags = 4
+atlas = ExtResource( 31 )
+region = Rect2( 0, 0, 106, 131 )
+
+[sub_resource type="AtlasTexture" id=209]
+flags = 4
+atlas = ExtResource( 31 )
+region = Rect2( 106, 0, 106, 131 )
+
+[sub_resource type="SpriteFrames" id=210]
+animations = [ {
+"frames": [ SubResource( 208 ), SubResource( 209 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="AtlasTexture" id=211]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 0, 0, 116, 177 )
+
+[sub_resource type="AtlasTexture" id=212]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 116, 0, 116, 177 )
+
+[sub_resource type="SpriteFrames" id=213]
+animations = [ {
+"frames": [ SubResource( 211 ), SubResource( 212 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="AtlasTexture" id=214]
+flags = 4
+atlas = ExtResource( 33 )
+region = Rect2( 0, 0, 131, 116 )
+
+[sub_resource type="AtlasTexture" id=215]
+flags = 4
+atlas = ExtResource( 33 )
+region = Rect2( 131, 0, 131, 116 )
+
+[sub_resource type="SpriteFrames" id=216]
+animations = [ {
+"frames": [ SubResource( 214 ), SubResource( 215 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[sub_resource type="AtlasTexture" id=217]
+flags = 4
+atlas = ExtResource( 34 )
+region = Rect2( 0, 0, 146, 104 )
+
+[sub_resource type="AtlasTexture" id=218]
+flags = 4
+atlas = ExtResource( 34 )
+region = Rect2( 146, 0, 146, 104 )
+
+[sub_resource type="SpriteFrames" id=219]
+animations = [ {
+"frames": [ SubResource( 217 ), SubResource( 218 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=220]
+flags = 4
+atlas = ExtResource( 35 )
+region = Rect2( 0, 0, 121, 176 )
+
+[sub_resource type="AtlasTexture" id=221]
+flags = 4
+atlas = ExtResource( 35 )
+region = Rect2( 121, 0, 121, 176 )
+
+[sub_resource type="AtlasTexture" id=222]
+flags = 4
+atlas = ExtResource( 35 )
+region = Rect2( 242, 0, 121, 176 )
+
+[sub_resource type="SpriteFrames" id=223]
+animations = [ {
+"frames": [ SubResource( 220 ), SubResource( 221 ), SubResource( 222 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
 [node name="World" type="Node2D"]
 script = ExtResource( 2 )
 __meta__ = {
@@ -1126,7 +1290,7 @@ expressions_map = {
 position = Vector2( -204, -224 )
 z_index = 1
 frames = ExtResource( 18 )
-frame = 1
+frame = 2
 playing = true
 offset = Vector2( -24, -88 )
 __meta__ = {
@@ -1135,8 +1299,112 @@ __meta__ = {
 
 [node name="Tree02" type="AnimatedSprite" parent="Objects"]
 position = Vector2( -184, -600 )
+z_index = 1
 frames = ExtResource( 19 )
+playing = true
 offset = Vector2( 4, -116 )
+
+[node name="Clover" type="Sprite" parent="Objects"]
+position = Vector2( -1328, 496 )
+z_index = 1
+texture = ExtResource( 21 )
+offset = Vector2( 0, -44 )
+
+[node name="Flower" type="Sprite" parent="Objects"]
+position = Vector2( 236, 508 )
+z_index = 1
+texture = ExtResource( 22 )
+offset = Vector2( 4, -68 )
+
+[node name="Flower2" type="AnimatedSprite" parent="Objects"]
+position = Vector2( 1380, 440 )
+z_index = 1
+frames = SubResource( 201 )
+frame = 1
+playing = true
+offset = Vector2( -4, -96 )
+
+[node name="Island01" type="AnimatedSprite" parent="Objects"]
+position = Vector2( 504, -380 )
+z_index = 1
+frames = SubResource( 204 )
+playing = true
+offset = Vector2( 16, -148 )
+
+[node name="Island02" type="AnimatedSprite" parent="Objects"]
+position = Vector2( -1484, -500 )
+z_index = 1
+frames = SubResource( 207 )
+playing = true
+offset = Vector2( 8, -88 )
+
+[node name="Island03" type="Sprite" parent="Objects"]
+position = Vector2( -372, 504 )
+z_index = 1
+texture = ExtResource( 26 )
+offset = Vector2( 8, -72 )
+
+[node name="Fungus01" type="Sprite" parent="Objects"]
+position = Vector2( 748, -20 )
+z_index = 1
+texture = ExtResource( 28 )
+offset = Vector2( -4, -84 )
+
+[node name="Fungus02" type="Sprite" parent="Objects"]
+position = Vector2( 1588, 520 )
+z_index = 1
+texture = ExtResource( 30 )
+offset = Vector2( -4, -56 )
+
+[node name="Fungus03" type="Sprite" parent="Objects"]
+position = Vector2( 1508, -600 )
+z_index = 1
+texture = ExtResource( 29 )
+offset = Vector2( 4, -108 )
+
+[node name="Fungus04" type="Sprite" parent="Objects"]
+position = Vector2( -640, 908 )
+z_index = 1
+texture = ExtResource( 27 )
+offset = Vector2( 4, -56 )
+
+[node name="Tatan" type="AnimatedSprite" parent="Objects"]
+position = Vector2( 356, -208 )
+z_index = 1
+frames = SubResource( 210 )
+playing = true
+offset = Vector2( 12, -44 )
+
+[node name="Panda" type="AnimatedSprite" parent="Objects"]
+position = Vector2( 1272, -168 )
+z_index = 1
+frames = SubResource( 213 )
+frame = 1
+playing = true
+offset = Vector2( -20, -80 )
+
+[node name="Gecko" type="AnimatedSprite" parent="Objects"]
+position = Vector2( 32, -500 )
+z_index = 1
+frames = SubResource( 216 )
+frame = 1
+playing = true
+offset = Vector2( -2, -48 )
+
+[node name="Beaver" type="AnimatedSprite" parent="Objects"]
+position = Vector2( -616, -159.5 )
+z_index = 1
+frames = SubResource( 219 )
+frame = 1
+playing = true
+offset = Vector2( 2, -28.5 )
+
+[node name="Nalga" type="AnimatedSprite" parent="Objects"]
+position = Vector2( -484, 912 )
+z_index = 1
+frames = SubResource( 223 )
+playing = true
+offset = Vector2( -2, -68 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -1154,7 +1422,6 @@ anchor_right = 0.5
 margin_left = -35.5
 margin_top = 16.0
 margin_right = 35.5
-mouse_filter = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-time_left = 30
+time_left = 60

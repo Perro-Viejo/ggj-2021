@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/TitleScreen/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/chuchel.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://src/GUI/Buttons/DefaultButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/gui/main_menu.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/controls.png" type="Texture" id=5]
 [ext_resource path="res://assets/resources/dynamic_fonts/opendyslexic_regular_16.tres" type="DynamicFont" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -21,7 +22,34 @@ font_data = ExtResource( 2 )
 content_margin_top = 2.0
 content_margin_bottom = 2.0
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.12549, 0.12549, 0.12549, 1 )
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id=10]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id=11]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="Animation" id=5]
 length = 0.001
 step = 0.05
 tracks/0/type = "value"
@@ -60,8 +88,20 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("BG/ControlsContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("BG/Credits:visible")
@@ -126,7 +166,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("BG/GameName:modulate")
@@ -152,8 +192,36 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("BG/ControlsContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=12]
+resource_name = "show_controls"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("BG/ControlsContainer:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("BG/Credits:visible")
@@ -387,11 +455,49 @@ size_flags_horizontal = 8
 text = "back"
 focus_animation = "none"
 
+[node name="ControlsContainer" type="PanelContainer" parent="BG"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="BG/ControlsContainer"]
+margin_right = 1280.0
+margin_bottom = 548.0
+mouse_filter = 2
+texture = ExtResource( 5 )
+
+[node name="MarginContainer" type="MarginContainer" parent="BG/ControlsContainer"]
+margin_right = 1280.0
+margin_bottom = 548.0
+mouse_filter = 2
+custom_constants/margin_bottom = 64
+
+[node name="CloseControls" parent="BG/ControlsContainer/MarginContainer" instance=ExtResource( 3 )]
+margin_left = 560.0
+margin_top = 428.0
+margin_right = 719.0
+margin_bottom = 484.0
+size_flags_vertical = 8
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "thanks!"
+focus_animation = "none"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/SETUP = SubResource( 4 )
-anims/credits_exit = SubResource( 5 )
-anims/go_to_world = SubResource( 6 )
-anims/show_credits = SubResource( 7 )
+anims/SETUP = SubResource( 5 )
+anims/credits_exit = SubResource( 6 )
+anims/go_to_world = SubResource( 7 )
+anims/show_controls = SubResource( 12 )
+anims/show_credits = SubResource( 8 )
 
 [node name="Tween" type="Tween" parent="."]
 
