@@ -53,6 +53,7 @@ func _exit_tree()->void:
 func _on_NewGame_pressed()->void:
 	$AnimationPlayer.play('go_to_world')
 	AudioEvent.emit_signal('play_requested', 'MX', 'InGame')
+	AudioEvent.emit_signal('play_requested', 'BG', 'Gehena')
 	AudioEvent.emit_signal('play_requested', 'UI', 'Menu_Button')
 	yield($AnimationPlayer, 'animation_finished')
 	GuiEvent.emit_signal('NewGame')

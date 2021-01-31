@@ -33,6 +33,8 @@ func _on_Options_pressed():
 	SectionEvent.Options = true
 
 func _on_MainMenu_pressed():
+	AudioEvent.emit_signal('stop_requested', 'MX', 'InGame')
+	AudioEvent.emit_signal('stop_requested', 'BG', 'Gehena')
 	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
 	GuiEvent.emit_signal("ChangeScene", Main_Menu)
 	SectionEvent.Paused = false
