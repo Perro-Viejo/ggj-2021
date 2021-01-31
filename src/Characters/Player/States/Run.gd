@@ -6,6 +6,7 @@ func _ready() -> void:
 
 
 func enter(msg: Dictionary = {}) -> void:
+	owner.play_animation('run')
 	.enter(msg)
 
 

@@ -8,6 +8,7 @@ func _ready() -> void:
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 func enter(msg: Dictionary = {}) -> void:
+	owner.play_animation('idle')
 	.enter(msg)
 
 

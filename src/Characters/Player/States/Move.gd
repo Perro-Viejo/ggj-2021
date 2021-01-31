@@ -56,8 +56,8 @@ func _physics_process(delta) -> void:
 	else:
 		owner.move_and_collide(dir * _calc_speed * 2 * delta)
 
-	if dir != Vector2(0,0) and not owner.is_moving:
+	if dir != Vector2(0,0):
 		_state_machine.transition_to_state(_state_machine.states.RUN)
 		owner.update_camera_limits()
-	elif dir == Vector2(0,0) and owner.is_moving:
+	elif dir == Vector2(0,0):
 		_state_machine.transition_to_state(_state_machine.states.IDLE)

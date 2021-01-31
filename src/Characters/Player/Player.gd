@@ -84,6 +84,10 @@ func add_light(item: Item) -> void:
 		set_light_mask(_lights_in_inventory.size() - 1)
 
 
+func play_animation(name: String) -> void:
+	$Sprite.play(name)
+
+
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _shoot_laser(target: Node2D, shoot: bool) -> void:
 	if shoot:
@@ -106,3 +110,4 @@ func _unpause() -> void:
 		PlayerEvent.emit_signal('game_won')
 	else:
 		is_paused = false
+		WorldEvent.emit_signal('timer_requested', Data.get_data(Data.TIME_LEFT))

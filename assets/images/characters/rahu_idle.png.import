@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/constellation_sagitario.png-ce985e5bd4fbb2bb7914be3673cfb842.stex"
+path="res://.import/rahu_idle.png-41f327ee46b8533b219c71d30c8e2c70.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/characters/constellation_sagitario.png"
-dest_files=[ "res://.import/constellation_sagitario.png-ce985e5bd4fbb2bb7914be3673cfb842.stex" ]
+source_file="res://assets/images/characters/rahu_idle.png"
+dest_files=[ "res://.import/rahu_idle.png-41f327ee46b8533b219c71d30c8e2c70.stex" ]
 
 [params]
 

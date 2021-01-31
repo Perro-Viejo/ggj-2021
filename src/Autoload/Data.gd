@@ -9,6 +9,7 @@ const LIGHT_RED := Color('#BA5671')
 const LIGHT_BLUE := Color('#56BAB9')
 const LIGHT_YELLOW := Color('#BAB256')
 const CURRENT_LIGHT_MASK := 'CURRENT_LIGHT_MASK'
+const TIME_LEFT := 'TIME_LEFT'
 
 var _data := {}
 
