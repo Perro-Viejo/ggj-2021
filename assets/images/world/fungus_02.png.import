@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/card_02.png-3e1f5f8cbf1324fdf77c56dd89df3c08.stex"
+path="res://.import/fungus_02.png-f74730a431b8ba1f01648e12a39f27c0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/cards/card_02.png"
-dest_files=[ "res://.import/card_02.png-3e1f5f8cbf1324fdf77c56dd89df3c08.stex" ]
+source_file="res://assets/images/world/fungus_02.png"
+dest_files=[ "res://.import/fungus_02.png-f74730a431b8ba1f01648e12a39f27c0.stex" ]
 
 [params]
 

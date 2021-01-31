@@ -1,6 +1,8 @@
 class_name Actor
 extends KinematicBody2D
 
+export var inventory: Resource
+
 signal died()
 signal moved_to_coordinate(cfg)
 signal moved_to_reference(cfg)
@@ -28,19 +30,16 @@ export var is_current_player := false
 export var voice: Texture = null
 export var expressions_scale := Vector2.ONE
 
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░variables públicas ░░░░
 var path := PoolVector2Array() setget _set_path
 var velocity := Vector2.ZERO
 
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ variables privadas ░░░░
 var _in_dialog := false setget set_in_dialog, is_in_dialog
 var _is_moving := false setget _set_is_moving, is_moving
 var _temporary_speed := 0
 
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ variables onready ░░░░
-#onready var inventory = $Inventory
 onready var state_machine = $StateMachine
 onready var _lower_name := name.to_lower()
+
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready():

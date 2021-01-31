@@ -7,6 +7,7 @@ func _ready() -> void:
 		i.rect_pivot_offset = i.rect_size / 2.0
 
 	WorldEvent.connect('light_changed', self, '_highlight_light')
+	PlayerEvent.connect('light_added', self, '_color_texture')
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
@@ -28,3 +29,7 @@ func _highlight_light(idx := 0) -> void:
 
 	$HBoxContainer.get_child(idx).modulate.a = 1.0
 	$HBoxContainer.get_child(idx).rect_scale = Vector2.ONE
+
+
+func _color_texture(item: Item, idx: int) -> void:
+	$HBoxContainer.get_child(idx).self_modulate = item.light_color

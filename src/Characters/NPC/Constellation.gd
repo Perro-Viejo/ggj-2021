@@ -2,12 +2,14 @@
 class_name Constellation
 extends Sprite
 
-export var spawn_rate := 0.1 setget set_spawn_rate
-export var lifetime := 30.0
-export var capture_time := 10.0
+export var linked_light: Resource
+export var hiding_light: Resource
 export var card: Texture
 export var creature: Texture
 export var creature_scale := Vector2.ONE
+export var spawn_rate := 0.1 setget set_spawn_rate
+export var lifetime := 30.0
+export var capture_time := 10.0
 
 var is_emitting := false setget set_is_emitting
 
@@ -21,6 +23,9 @@ onready var _creature: Sprite = $Creature
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready() -> void:
+	assert(linked_light)
+	
+	light_mask = linked_light.light_mask
 	_capture_progress.hide()
 	_creature.texture = creature
 	_creature.light_mask = light_mask

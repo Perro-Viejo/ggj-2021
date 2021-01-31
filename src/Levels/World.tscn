@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Levels/World.gd" type="Script" id=2]
@@ -6,21 +6,56 @@
 [ext_resource path="res://assets/images/world/tmp_chicken_track.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/world/map.PNG" type="Texture" id=5]
 [ext_resource path="res://assets/images/characters/constellation_cancer.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/gui/cards/card_01.png" type="Texture" id=7]
-[ext_resource path="res://src/Levels/Tracks.gd" type="Script" id=8]
-[ext_resource path="res://assets/images/gui/cards/card_02.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/cards/sagitarius.png" type="Texture" id=7]
+[ext_resource path="res://src/Levels/Routes.gd" type="Script" id=8]
+[ext_resource path="res://assets/images/gui/cards/cancer.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/world/tmp_dog_track.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/characters/constellation_sagitario.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/characters/constellation_pisces.png" type="Texture" id=12]
+[ext_resource path="res://src/Inventory/LapisLazuli.tres" type="Resource" id=13]
+[ext_resource path="res://src/Inventory/Turquoise.tres" type="Resource" id=14]
+[ext_resource path="res://src/Inventory/Ruby.tres" type="Resource" id=15]
+[ext_resource path="res://assets/images/gui/cards/pisces.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/world/tmp_frog_track.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/world/tree_01.png" type="Texture" id=18]
 
-[sub_resource type="Curve2D" id=3]
+[sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -264, 72, -404.456, 24.0271, 404.456, -24.0271, 24, -464, -208.112, 441.873, 208.112, -441.873, 760, -672 )
+"points": PoolVector2Array( 0, 0, 0, 0, -264, 72, -387.466, -45.8196, 387.466, 45.8196, 32.4217, -408.886, 69.3871, 411.669, -69.3871, -411.669, 751.654, -665.62 )
 }
 
-[sub_resource type="Curve2D" id=4]
+[sub_resource type="Curve2D" id=2]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 41.8631, 132.414, 0, 0, 0, 0, 474.124, -71.0029, 0, 0, 0, 0, 978.428, 162.079, 0, 0, 0, 0, 1620.46, 28.5866, 0, 0, 0, 0, 1484.85, -255.349 )
 }
+
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -160.587, 292.658, 170, 6, -170, -6, -364.587, 746.658, 150, 76, -150, -76, -624.587, 486.658, 246, 20, -246, -20, -1154.59, 598.658, -164, -68, 164, 68, -1276.59, 910.658, 0, 0, 0, 0, -1066.59, 894.658 )
+}
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 166, 191 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 18 )
+region = Rect2( 166, 0, 166, 191 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 18 )
+region = Rect2( 332, 0, 166, 191 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 2 )
@@ -29,72 +64,12 @@ __meta__ = {
 "_edit_vertical_guides_": [ 3454.71, 3791.07, -1280.0 ]
 }
 
-[node name="WorldLayer" type="CanvasLayer" parent="."]
-layer = 0
-follow_viewport_enable = true
-
 [node name="Bg" type="Sprite" parent="."]
 z_index = -5
 texture = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -135.507, 181.569 )
-expressions_map = {
-"angry": -1,
-"excited": 1,
-"happy": 0,
-"normal": 2,
-"sad": -1,
-"surprised": 3,
-"thinking": -1,
-"worried": -1
-}
-
-[node name="Tracks" type="Node2D" parent="."]
-script = ExtResource( 8 )
-
-[node name="Tween" type="Tween" parent="Tracks"]
-
-[node name="Paths" type="Node2D" parent="Tracks"]
-
-[node name="Path2D" type="Path2D" parent="Tracks/Paths"]
-curve = SubResource( 3 )
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Tracks/Paths/Path2D"]
-position = Vector2( -264, 72 )
-rotation = -1.78036
-
-[node name="Path2D2" type="Path2D" parent="Tracks/Paths"]
-curve = SubResource( 4 )
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Tracks/Paths/Path2D2"]
-position = Vector2( 41.8631, 132.414 )
-rotation = -0.439847
-
-[node name="Constellations" type="Node2D" parent="."]
-
-[node name="Constellation" parent="Constellations" instance=ExtResource( 3 )]
-light_mask = 1
-position = Vector2( -264, 72 )
-rotation = -1.78036
-texture = ExtResource( 4 )
-spawn_rate = 20.0
-card = ExtResource( 7 )
-creature = ExtResource( 6 )
-creature_scale = Vector2( 0.5, 0.5 )
-
-[node name="Constellation2" parent="Constellations" instance=ExtResource( 3 )]
-light_mask = 2
-position = Vector2( 41.8631, 132.414 )
-rotation = -0.439847
-texture = ExtResource( 10 )
-spawn_rate = 20.0
-card = ExtResource( 9 )
-creature = ExtResource( 11 )
-creature_scale = Vector2( 0.7, 0.7 )
 
 [node name="Limits" type="StaticBody2D" parent="."]
 
@@ -109,3 +84,82 @@ polygon = PoolVector2Array( -1387.14, -864.89, -1412.08, -844.845, -1433.91, -82
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Limits"]
 polygon = PoolVector2Array( 1074.3, -9.75597, 1113.4, -39.6078, 1167.21, -47.5962, 1202.95, -78.2889, 1236.17, -103.936, 1273.59, -117.811, 1324.46, -110.243, 1361.04, -95.9477, 1401.4, -69.88, 1444.71, -53.062, 1461.95, -16.9035, 1449.76, 0.334885, 1420.82, 13.0462, 1396.88, 16.8259, 1381.76, 27.5352, 1335.77, 20.6057, 1304.9, 31.315, 1265.22, 31.945, 1233.72, 16.8259, 1188.99, 23.7555, 1176.39, 31.315, 1141.74, 29.4251, 1108.36, 33.2049, 1085.68, 17.4559 )
+
+[node name="Routes" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="Tween" type="Tween" parent="Routes"]
+
+[node name="Paths" type="Node2D" parent="Routes"]
+
+[node name="Path2D" type="Path2D" parent="Routes/Paths"]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Routes/Paths/Path2D"]
+position = Vector2( -264, 72 )
+rotation = -1.72909
+
+[node name="Path2D2" type="Path2D" parent="Routes/Paths"]
+curve = SubResource( 2 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Routes/Paths/Path2D2"]
+position = Vector2( 41.8631, 132.414 )
+rotation = -0.439847
+
+[node name="Path2D3" type="Path2D" parent="Routes/Paths"]
+curve = SubResource( 3 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Routes/Paths/Path2D3"]
+position = Vector2( -160.587, 292.658 )
+rotation = 1.65185
+
+[node name="Constellations" type="Node2D" parent="."]
+
+[node name="Sagitarius" parent="Constellations" instance=ExtResource( 3 )]
+position = Vector2( -72, 0 )
+texture = ExtResource( 4 )
+linked_light = ExtResource( 15 )
+hiding_light = ExtResource( 14 )
+card = ExtResource( 7 )
+creature = ExtResource( 11 )
+creature_scale = Vector2( 0.5, 0.5 )
+spawn_rate = 20.0
+
+[node name="Cancer" parent="Constellations" instance=ExtResource( 3 )]
+texture = ExtResource( 10 )
+linked_light = ExtResource( 14 )
+hiding_light = ExtResource( 13 )
+card = ExtResource( 9 )
+creature = ExtResource( 6 )
+creature_scale = Vector2( 0.5, 0.5 )
+spawn_rate = 20.0
+
+[node name="Pisces" parent="Constellations" instance=ExtResource( 3 )]
+position = Vector2( 72, 0 )
+texture = ExtResource( 17 )
+linked_light = ExtResource( 13 )
+hiding_light = ExtResource( 15 )
+card = ExtResource( 16 )
+creature = ExtResource( 12 )
+creature_scale = Vector2( 0.5, 0.5 )
+
+[node name="Objects" type="YSort" parent="."]
+
+[node name="Player" parent="Objects" instance=ExtResource( 1 )]
+position = Vector2( -133, 66.6158 )
+expressions_map = {
+"angry": -1,
+"excited": 1,
+"happy": 0,
+"normal": 2,
+"sad": -1,
+"surprised": 3,
+"thinking": -1,
+"worried": -1
+}
+
+[node name="Tree" type="AnimatedSprite" parent="Objects"]
+position = Vector2( -572, -180 )
+frames = SubResource( 7 )
+playing = true
+offset = Vector2( -28, -92 )

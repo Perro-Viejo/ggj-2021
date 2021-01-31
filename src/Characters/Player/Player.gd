@@ -1,9 +1,6 @@
 class_name Player
 extends 'res://src/Characters/Actor.gd'
 
-export var mask: NodePath
-export var light: NodePath
-
 var grabbing: bool = false
 var on_ground: bool = false
 var foot = 'L'
@@ -12,13 +9,14 @@ var is_out: bool = false
 var is_moving = false
 var dir := Vector2.ZERO
 
-var _current_light_idx := 1
-var _lights_in_inventory := 3
+var _current_light_idx := -1
+var _lights_in_inventory := []
 var _capture_target: Node2D
+var _captured_constellations := 0
 
 #onready var _light := $Light
-onready var _light_mask: Light2D = get_node(mask)
-onready var _crosshair: Sprite = get_node(light)
+onready var _light_mask: Light2D = find_node('LightMask')
+onready var _crosshair: Sprite = find_node('Crosshair')
 onready var _camera: Camera2D = find_node('Camera2D')
 onready var _laser: RayCast2D = find_node('LaserBeam2D')
 
@@ -32,7 +30,6 @@ func _ready():
 	HudEvent.connect('capture_screen_closed', self, '_unpause')
 
 	update_camera_limits()
-	set_light_mask()
 
 
 func _input(event: InputEvent) -> void:
@@ -49,7 +46,7 @@ func _input(event: InputEvent) -> void:
 		else:
 			return
 		set_light_mask(
-			wrapi(_current_light_idx + amount, 1, _lights_in_inventory + 1)
+			wrapi(_current_light_idx + amount, 0, _lights_in_inventory.size())
 		)
 	elif event is InputEventMouseMotion:
 #		_light.look_at(get_global_mouse_position())
@@ -57,22 +54,14 @@ func _input(event: InputEvent) -> void:
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
-func set_light_mask(id := 1) -> void:
-	_current_light_idx = id
+func set_light_mask(idx: int) -> void:
+	var light_item: Item = inventory.get_item(_lights_in_inventory[idx])
 
-	match id:
-		1:
-			_crosshair.self_modulate = Data.LIGHT_RED
-			_light_mask.range_item_cull_mask = 1
-		2:
-			_crosshair.self_modulate = Data.LIGHT_BLUE
-			_light_mask.range_item_cull_mask = 2
-		3:
-			_crosshair.self_modulate = Data.LIGHT_YELLOW
-			_light_mask.range_item_cull_mask = 4
-
+	_current_light_idx = idx
+	_crosshair.self_modulate = light_item.light_color
+	_light_mask.range_item_cull_mask = light_item.light_mask
 	Data.set_data(Data.CURRENT_LIGHT_MASK, _light_mask.range_item_cull_mask)
-	WorldEvent.emit_signal('light_changed', _current_light_idx - 1)
+	WorldEvent.emit_signal('light_changed', _current_light_idx)
 
 
 func update_camera_limits() -> void:
@@ -80,9 +69,19 @@ func update_camera_limits() -> void:
 	_camera.limit_right = position.x + 1024
 	_camera.limit_top = position.y - 438
 	_camera.limit_bottom = position.y + 438
-	
+
 	if _capture_target:
 		_laser.look_at(_capture_target.global_position)
+
+
+func add_light(item: Item) -> void:
+	(inventory as Inventory).add_to_inventory(item)
+
+	if not _lights_in_inventory.has(item.light_id):
+		_lights_in_inventory.append(item.light_id)
+		PlayerEvent.emit_signal('light_added', item, _lights_in_inventory.size() - 1)
+	if _current_light_idx < 0:
+		set_light_mask(_lights_in_inventory.size() - 1)
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
@@ -98,7 +97,12 @@ func _shoot_laser(target: Node2D, shoot: bool) -> void:
 func _add_to_inventory(target: Node2D) -> void:
 	is_paused = true
 	_laser.is_casting = false
+	_captured_constellations += 1
+	add_light((target as Constellation).hiding_light)
 
 
 func _unpause() -> void:
-	is_paused = false
+	if _captured_constellations == inventory.max_size:
+		PlayerEvent.emit_signal('game_won')
+	else:
+		is_paused = false

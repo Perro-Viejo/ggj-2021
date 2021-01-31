@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/card_03.png-d719470eb4cd580adfb9b337e06efc51.stex"
+path="res://.import/sagitarius.png-d9024031a0d6f8672e68429124a84ced.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/cards/card_03.png"
-dest_files=[ "res://.import/card_03.png-d719470eb4cd580adfb9b337e06efc51.stex" ]
+source_file="res://assets/images/gui/cards/sagitarius.png"
+dest_files=[ "res://.import/sagitarius.png-d9024031a0d6f8672e68429124a84ced.stex" ]
 
 [params]
 
