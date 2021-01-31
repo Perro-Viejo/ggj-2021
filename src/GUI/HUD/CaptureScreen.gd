@@ -3,6 +3,7 @@ extends PanelContainer
 export var player_inventory: Resource
 
 var _listening_input := false
+var _captured_constellation := ''
 
 onready var _close_btn: DefaultButton = find_node('Close')
 onready var _card_texture: TextureRect = find_node('Card')
@@ -30,6 +31,8 @@ func _check_input_type(event: InputEvent) -> void:
 
 func _show_captured_sign(constellation: Constellation) -> void:
 	AudioEvent.emit_signal('play_requested', 'UI', 'Card_Show')
+	_captured_constellation = constellation.name
+	
 	_card_texture.texture = constellation.card
 	_light_texture.self_modulate = (constellation.hiding_light as Item).light_color
 	
@@ -72,5 +75,7 @@ func _close() -> void:
 	$Tween.start()
 	yield($Tween, 'tween_all_completed')
 
+	AudioEvent.emit_signal('play_requested', 'MX', _captured_constellation, Vector2.ZERO, 0.0)
+	print(AudioEvent.emit_signal('playback_position_requested', 'MX', 'InGame'))
 	HudEvent.emit_signal('capture_screen_closed')
 	hide()

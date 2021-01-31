@@ -56,6 +56,12 @@ func play_sound(source: String, sound: String, _position: Vector2 = Vector2(-160
 			else:
 				audio.select_sound.connect('finished', self, '_on_finished', [source, sound])
 
+func playback_position_requested(source, sound):
+	var current_position
+	var audio: Node = _get_audio(source, sound)
+	current_position = audio.get_playback_position()
+	return current_position 
+
 func play_dx(character: String, emotion: String):
 	if not emotion:
 		emotion = 'Gen'

@@ -50,6 +50,8 @@ func _check_lose() -> void:
 
 
 func _stop_perro_timer() -> void:
+	AudioEvent.emit_signal('stop_requested', 'MX', 'InGame')
+	AudioEvent.emit_signal('stop_requested', 'BG', 'Gehena')
 	WorldEvent.emit_signal('timer_stop_requested')
 
 

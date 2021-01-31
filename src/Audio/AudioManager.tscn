@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/Audio/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/current/sfx_ray_loop.ogg" type="AudioStream" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/audio/current/ui_menu_button.ogg" type="AudioStream" id=12]
 [ext_resource path="res://assets/audio/current/ui_card_show.ogg" type="AudioStream" id=13]
 [ext_resource path="res://src/Audio/RandomTool.gd" type="Script" id=14]
+[ext_resource path="res://assets/audio/current/bg_gehena.ogg" type="AudioStream" id=15]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -22,15 +23,19 @@ script = ExtResource( 1 )
 
 [node name="InGame" type="AudioStreamPlayer" parent="MX"]
 stream = ExtResource( 5 )
+volume_db = -8.0
 
 [node name="Sagittarius" type="AudioStreamPlayer" parent="MX"]
 stream = ExtResource( 8 )
+volume_db = -8.0
 
 [node name="Piscis" type="AudioStreamPlayer" parent="MX"]
 stream = ExtResource( 7 )
+volume_db = -8.0
 
 [node name="Cancer" type="AudioStreamPlayer" parent="MX"]
 stream = ExtResource( 6 )
+volume_db = -8.0
 
 [node name="UI" type="Node2D" parent="."]
 
@@ -84,12 +89,18 @@ pitch_scale = 3.0
 
 [node name="Ray_Head" type="AudioStreamPlayer2D" parent="Laser"]
 stream = ExtResource( 4 )
-volume_db = -3.0
+volume_db = -6.0
 
 [node name="Ray_Loop" type="AudioStreamPlayer2D" parent="Laser"]
 stream = ExtResource( 2 )
-volume_db = -3.0
+volume_db = -6.0
 
 [node name="Ray_Tail" type="AudioStreamPlayer2D" parent="Laser"]
 stream = ExtResource( 3 )
-volume_db = -6.0
+volume_db = -8.0
+
+[node name="BG" type="Node2D" parent="."]
+
+[node name="Gehena" type="AudioStreamPlayer" parent="BG"]
+stream = ExtResource( 15 )
+volume_db = -12.0
