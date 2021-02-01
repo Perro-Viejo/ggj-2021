@@ -14,11 +14,12 @@ func _ready() -> void:
 	# Conectarse a eventos propios y de los hijos de satanas
 	connect('gui_input', self, '_check_input_type')
 	_close_btn.connect('pressed', self, '_close')
-	$DescriptionContainer.modulate.a = 0.0
 	
 	# Conectarse a eventos del mundo pokémon
 	PlayerEvent.connect('capture_done', self, '_show_captured_sign')
+	GuiEvent.connect('NewGame', self, '_set_default_state')
 	
+	$DescriptionContainer.modulate.a = 0.0
 	hide()
 
 
@@ -78,3 +79,8 @@ func _close() -> void:
 	AudioEvent.emit_signal('layer_requested', 'MX', _captured_constellation)
 	HudEvent.emit_signal('capture_screen_closed')
 	hide()
+
+
+func _set_default_state() -> void:
+	_listening_input = false
+	_captured_constellation = ''

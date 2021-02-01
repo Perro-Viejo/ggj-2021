@@ -24,6 +24,7 @@ func _ready()->void:
 	GuiEvent.connect("Exit",		self, "on_exit")
 	GuiEvent.connect("ChangeScene",self, "on_change_scene")
 	GuiEvent.connect("Restart", 	self, "restart_scene")
+	GuiEvent.connect('NewGame', self, '_set_default_state')
 	SceneLoader.connect("scene_loaded", self, "on_scene_loaded")
 
 	GUIManager.gui_collect_focusgroup()
@@ -32,9 +33,13 @@ func _ready()->void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	else:
 		$MouseBlocker/Control.mouse_filter = 2
+	
+	_set_default_state()
+
 
 func on_options(options) -> void:
 	GUIManager.gui_collect_focusgroup()
+
 
 func on_change_scene(scene):
 	if transition_state != IDLE:
@@ -62,14 +67,17 @@ func on_change_scene(scene):
 
 		change_scene()
 
+
 func on_exit()->void:
 	if transition_state != IDLE:
 		return
 	get_tree().quit()
 
+
 func on_scene_loaded(loaded)->void:
 	next_scene = loaded.resource
 	emit_signal("scene_is_loaded")	#Scene fade signal in case it loads longer than fade out
+
 
 func change_scene()->void: #handle actual scene change
 	if next_scene == null:
@@ -82,6 +90,7 @@ func change_scene()->void: #handle actual scene change
 	$Levels.add_child(current_scene_instance)
 	Data.set_data(Data.CURRENT_SCENE, current_scene_instance.name)
 
+
 func restart_scene():
 	if transition_state != IDLE:
 		return
@@ -89,6 +98,7 @@ func restart_scene():
 	current_scene_instance.free()
 	current_scene_instance = current_scene.instance()
 	$Levels.add_child(current_scene_instance)
+
 
 func _on_TransitionTween_tween_completed(object, key)->void:
 	match transition_state:
@@ -108,6 +118,12 @@ func _on_TransitionTween_tween_completed(object, key)->void:
 		TRANSITION_IN:
 			transition_state = IDLE
 
+
 func play_song(mx: AudioStream) -> void:
 	$Music.stream = mx
 	$Music.play()
+
+
+func _set_default_state() -> void:
+	Data.set_data(Data.CURRENT_LIGHT_MASK, 0)
+	Data.set_data(Data.TIME_LEFT, 0)

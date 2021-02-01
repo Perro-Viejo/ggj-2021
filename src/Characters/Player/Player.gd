@@ -28,6 +28,7 @@ func _ready():
 	PlayerEvent.connect('capture_stoped', self, '_shoot_laser', [ null, false ])
 	PlayerEvent.connect('capture_done', self, '_add_to_inventory')
 	HudEvent.connect('capture_screen_closed', self, '_unpause')
+	GuiEvent.connect('NewGame', self, '_setup')
 
 	update_camera_limits()
 
@@ -49,7 +50,6 @@ func _input(event: InputEvent) -> void:
 			wrapi(_current_light_idx + amount, 0, _lights_in_inventory.size())
 		)
 	elif event is InputEventMouseMotion:
-#		_light.look_at(get_global_mouse_position())
 		_crosshair.position = get_local_mouse_position()
 
 
@@ -89,6 +89,12 @@ func play_animation(name: String) -> void:
 	$Sprite.play(name)
 
 
+func lose() -> void:
+	is_paused = true
+	_capture_target = null
+	_laser.is_casting = false
+
+
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _shoot_laser(target: Node2D, shoot: bool) -> void:
 	if shoot:
@@ -116,3 +122,11 @@ func _unpause() -> void:
 	else:
 		is_paused = false
 		WorldEvent.emit_signal('timer_requested', Data.get_data(Data.TIME_LEFT))
+
+
+func _setup() -> void:
+	_current_light_idx = -1
+	_lights_in_inventory = []
+	_capture_target = null
+	_captured_constellations = 0
+	(inventory as Inventory).clean()

@@ -45,7 +45,7 @@ func _assign_starting_light(constellations: Array) -> void:
 
 
 func _check_lose() -> void:
-	_player.is_paused = true
+	_player.lose()
 	WorldEvent.emit_signal('game_lost')
 
 
@@ -60,4 +60,4 @@ func _stop_perro_timer() -> void:
 
 func _add_time(_constellation: Constellation) -> void:
 	WorldEvent.emit_signal('timer_stop_requested')
-	Data.data_sumi(Data.TIME_LEFT, 30)
+	Data.data_sumi(Data.TIME_LEFT, 15)

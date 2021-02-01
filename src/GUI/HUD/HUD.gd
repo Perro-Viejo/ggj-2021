@@ -14,15 +14,12 @@ onready var _main_menu_btn: Button = find_node('MainMenuBtn')
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready() -> void:
-	$Control.hide()
-	_win_panel.modulate.a = 0.0
-	_lose_panel.modulate.a = 0.0
-	
-	
+	_setup()
+
+
 	# Conectarse a eventos de los hijos
 	$Tween.connect('tween_all_completed', self, '_show_main_menu_btn')
 	_main_menu_btn.connect('pressed', self, '_go_to_main_menu')
-	
 
 	# Conectarse a los eventos del señor
 	WorldEvent.connect('world_entered', self, '_on_world_entered')
@@ -64,6 +61,11 @@ func _show_win_panel() -> void:
 
 
 func _show_lose_panel() -> void:
+	AudioEvent.emit_signal('stop_requested', 'MX', 'InGame')
+	AudioEvent.emit_signal('stop_requested', 'MX', 'Sagittarius')
+	AudioEvent.emit_signal('stop_requested', 'MX', 'Cancer')
+	AudioEvent.emit_signal('stop_requested', 'MX', 'Piscis')
+	AudioEvent.emit_signal('stop_requested', 'BG', 'Gehena')
 	_lose_panel.show()
 	$Tween.interpolate_property(
 		_lose_panel, 'modulate:a',
@@ -78,8 +80,15 @@ func _show_main_menu_btn() -> void:
 
 
 func _go_to_main_menu() -> void:
+	_setup()
+	GuiEvent.emit_signal('NewGame')
+	GuiEvent.emit_signal('ChangeScene', main_menu)
+
+
+func _setup() -> void:
+	$Control.hide()
 	_win_panel.hide()
 	_lose_panel.hide()
 	_main_menu_btn_container.hide()
-	GuiEvent.emit_signal('NewGame')
-	GuiEvent.emit_signal('ChangeScene', main_menu)
+	_win_panel.modulate.a = 0.0
+	_lose_panel.modulate.a = 0.0

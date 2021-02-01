@@ -5,11 +5,8 @@ const DEV_MODE := 'DEV_MODE'
 const CURRENT_SCENE := 'CURRENT_SCENE'
 const DIALOGS := 'DIALOGS'
 const FORCE_FOCUS := 'FORCE_FOCUS'
-const LIGHT_RED := Color('#BA5671')
-const LIGHT_BLUE := Color('#56BAB9')
-const LIGHT_YELLOW := Color('#BAB256')
-const CURRENT_LIGHT_MASK := 'CURRENT_LIGHT_MASK'
-const TIME_LEFT := 'TIME_LEFT'
+const CURRENT_LIGHT_MASK := 'CURRENT_LIGHT_MASK' # int
+const TIME_LEFT := 'TIME_LEFT' # int
 
 var _data := {}
 

@@ -62,7 +62,6 @@ func play_sound(source: String, sound: String, _position: Vector2 = Vector2(-160
 func layer_requested(source, sound):
 	var current_position = $MX/InGame.get_playback_position()
 	play_sound(source, sound, Vector2.ZERO, current_position)
-	return current_position 
 
 
 func play_dx(character: String, emotion: String):

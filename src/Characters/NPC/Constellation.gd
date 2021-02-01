@@ -36,6 +36,9 @@ func _ready() -> void:
 	_area2d.connect('input_event', self, '_check_input')
 	_area2d.connect('mouse_entered', self, '_panic')
 	_area2d.connect('mouse_exited', self, '_calm_down')
+	
+	# Conectarse a señales del universo
+	WorldEvent.connect('game_lost', self, '_on_game_lost')
 
 	add_child(_timer)
 
@@ -104,9 +107,9 @@ func _check_input(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 				if not $Tween.is_connected('tween_completed', self, '_capture'):
 					$Tween.connect('tween_completed', self, '_capture')
 				PlayerEvent.emit_signal('capture_started', self)
+				$Tween.start()
 			else:
 				_stop_capture()
-			$Tween.start()
 
 
 func _panic() -> void:
@@ -119,7 +122,6 @@ func _calm_down() -> void:
 	$Tween.stop_all()	
 	_capture_progress.hide()
 	_stop_capture()
-	$Tween.start()
 
 
 func _capture(_obj: Object, _key: NodePath) -> void:
@@ -143,3 +145,12 @@ func _stop_capture() -> void:
 			0.5, Tween.TRANS_LINEAR, Tween.EASE_IN
 		)
 		PlayerEvent.emit_signal('capture_stoped')
+		$Tween.start()
+
+
+func _on_game_lost() -> void:
+	$Tween.remove_all()
+	_stop_capture()
+	_area2d.disconnect('input_event', self, '_check_input')
+	_area2d.disconnect('mouse_entered', self, '_panic')
+	_area2d.disconnect('mouse_exited', self, '_calm_down')

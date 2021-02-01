@@ -39,5 +39,4 @@ func _move() -> void:
 
 
 func _play_sfx():
-	print('tumami')
 	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')

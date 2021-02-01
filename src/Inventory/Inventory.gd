@@ -59,6 +59,11 @@ func is_full() -> bool:
 	return current_size == max_size
 
 
+func clean() -> void:
+	_inventory = {}
+	current_size = 0
+
+
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _add_item_to_inventory(item: Item) -> bool:
 	if max_size < 0 or current_size + 1 <= max_size:
