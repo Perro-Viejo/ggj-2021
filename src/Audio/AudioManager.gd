@@ -15,6 +15,7 @@ func _ready():
 	AudioEvent.connect('change_volume', self, 'set_volume')
 	AudioEvent.connect('position_amb', self, 'set_amb_position')
 	AudioEvent.connect('headloop_toggle', self, 'toggle_head_loop_tail')
+	AudioEvent.connect('layer_requested', self, 'layer_requested')
 	
 
 func _get_audio(source, sound) -> Node:
@@ -23,6 +24,7 @@ func _get_audio(source, sound) -> Node:
 	if has_node(sound_path):
 		node = get_node(sound_path)
 	return node
+
 
 func play_sound(source: String, sound: String, _position: Vector2 = Vector2(-160, 90), start_time: float = 0.0) -> void:
 	var audio: Node = _get_audio(source, sound)
@@ -56,16 +58,18 @@ func play_sound(source: String, sound: String, _position: Vector2 = Vector2(-160
 			else:
 				audio.select_sound.connect('finished', self, '_on_finished', [source, sound])
 
-func playback_position_requested(source, sound):
-	var current_position
-	var audio: Node = _get_audio(source, sound)
-	current_position = audio.get_playback_position()
+
+func layer_requested(source, sound):
+	var current_position = $MX/InGame.get_playback_position()
+	play_sound(source, sound, Vector2.ZERO, current_position)
 	return current_position 
+
 
 func play_dx(character: String, emotion: String):
 	if not emotion:
 		emotion = 'Gen'
 	play_sound('DX/'+character, emotion, Vector2.ZERO)
+
 
 func stop_sound(source: String, sound: String) -> void:
 	_get_audio(source, sound).stop()

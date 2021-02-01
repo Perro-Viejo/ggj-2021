@@ -75,6 +75,7 @@ func update_camera_limits() -> void:
 
 
 func add_light(item: Item) -> void:
+	_capture_target = null
 	(inventory as Inventory).add_to_inventory(item)
 
 	if not _lights_in_inventory.has(item.light_id):

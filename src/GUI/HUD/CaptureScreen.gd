@@ -75,7 +75,6 @@ func _close() -> void:
 	$Tween.start()
 	yield($Tween, 'tween_all_completed')
 
-	AudioEvent.emit_signal('play_requested', 'MX', _captured_constellation, Vector2.ZERO, 0.0)
-	print(AudioEvent.emit_signal('playback_position_requested', 'MX', 'InGame'))
+	AudioEvent.emit_signal('layer_requested', 'MX', _captured_constellation)
 	HudEvent.emit_signal('capture_screen_closed')
 	hide()
