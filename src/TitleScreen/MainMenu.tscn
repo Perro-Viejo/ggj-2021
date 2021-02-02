@@ -484,6 +484,8 @@ margin_right = 1280.0
 margin_bottom = 548.0
 mouse_filter = 2
 texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
 
 [node name="MarginContainer" type="MarginContainer" parent="BG/ControlsContainer"]
 margin_right = 1280.0
